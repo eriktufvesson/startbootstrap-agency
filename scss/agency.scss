@@ -1,5 +1,13 @@
-@import "variables.scss";
-@import "mixins.scss";
+// Bootstrap
+@import "bootstrap-custom";
+
+// Font Awesome
+$fa-font-path: "../vendor/font-awesome/fonts";
+@import "../vendor/font-awesome/scss/font-awesome";
+
+// Custom
+@import "variables";
+@import "mixins";
 
 // Global Components
 
@@ -90,7 +98,7 @@ h1, h2, h3, h4, h5, h6 {
         margin-left: 4px;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: $screen-xs-max) {
         padding: 15px 20px;
         font-size: 16px;
     }
@@ -109,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
         margin-left: 4px;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: $screen-xs-max) {
         padding: 15px 20px;
         font-size: 16px;
     }
@@ -140,7 +148,8 @@ h1, h2, h3, h4, h5, h6 {
     .navbar-toggle {
         background-color: $theme-primary;
         border-color: $theme-primary;
-        @include heading-font;
+        @include body-font;
+        text-transform: uppercase;
         color: white;
         font-size: 12px;
         &:hover,
@@ -154,11 +163,13 @@ h1, h2, h3, h4, h5, h6 {
                 @include heading-font;
                 font-weight: 400;
                 letter-spacing: 1px;
-                color: white;
+                color: $theme-primary;
                 &:hover,
                 &:focus {
-                    color: $theme-primary;
+                    color: white;
                     outline: none;
+                    background-color: darken($theme-dark-primary, 10%);
+                    border-radius: 3px;
                 }
             }
         }
@@ -175,7 +186,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-@media(min-width:768px) {
+@media(min-width:$screen-sm-min) {
     .navbar-custom {
         background-color: transparent;
         padding: 25px 0;
@@ -192,6 +203,13 @@ h1, h2, h3, h4, h5, h6 {
         .navbar-nav>.active>a {
             border-radius: 3px;
         }
+        .nav {
+            li {
+                a {
+                color: white;
+                }
+            }
+        }
     }
 }
 
@@ -199,11 +217,28 @@ h1, h2, h3, h4, h5, h6 {
 
 @media(min-width:768px) {
     .navbar-custom.affix {
-        background-color: $gray;
+        background-color: $gray-lighter;
         padding: 10px 0;
         .navbar-brand {
             font-size: 1.5em;
             // color: $theme-primary;
+        }
+
+        .nav {
+            li {
+                a {
+                    color: $theme-primary;
+                    &:hover,
+                    &:focus {
+                        color: white;
+                    }
+                }
+            }
+        }
+        .navbar-nav>.active>a,
+        .navbar-nav>.active>a:hover,
+        .navbar-nav>.active>a:focus {
+            color: white;
         }
     }
 }
@@ -305,7 +340,7 @@ section {
     }
 }
 
-@media(min-width:768px) {
+@media(min-width: $screen-sm-min) {
     section {
         padding: 150px 0;
     }
@@ -313,9 +348,22 @@ section {
 
 // Services Section
 
-.service-heading {
-    margin: 15px 0;
-    text-transform: none;
+#services {
+    .service-heading {
+        margin: 15px 0;
+        text-transform: none;
+    }
+    .service-body {
+        margin-bottom: 50px;
+    }
+}
+
+@media(min-width: $screen-sm-min) {
+    #services {
+        .service-body {
+            margin-bottom: 0;
+        }
+    }
 }
 
 // Portfolio Section
@@ -383,7 +431,7 @@ section {
     }
 }
 
-@media(min-width:767px) {
+@media(min-width: $screen-sm-min) {
     #portfolio {
         .portfolio-item {
             margin: 0 0 30px;
@@ -494,7 +542,7 @@ section {
     }
 }
 
-@media(min-width:768px) {
+@media(min-width:$screen-sm-min) {
     .timeline {
         &:before {
             left: 50%;
