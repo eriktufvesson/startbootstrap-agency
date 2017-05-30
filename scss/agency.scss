@@ -65,32 +65,73 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary {
     @include button-variant(white, $theme-primary, $theme-primary);
-    @include heading-font;
-    font-weight: 700;
+    @include body-font;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.btn-success {
+    @include button-variant(white, $theme-success, $theme-success);
+    @include body-font;
+    text-transform: uppercase;
+    font-weight: 400;
 }
 
 .btn-xl {
     @include button-variant(white, $theme-primary, $theme-primary);
-    @include heading-font;
-    font-weight: 700;
-    border-radius: 3px;
+    @include body-font;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-radius: 10px;
     font-size: 18px;
     padding: 20px 40px;
+
+    i {
+        margin-left: 4px;
+    }
+
+    @media (max-width: 767px) {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+}
+
+.btn-xl-success {
+    @include button-variant(white, $theme-success, $theme-success);
+    @include body-font;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 20px 40px;
+
+    i {
+        margin-left: 4px;
+    }
+
+    @media (max-width: 767px) {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
 }
 
 // Custom Navigation Bar
 
 .navbar-custom {
-    background-color: $gray-darker;
+    background-color: $gray-lighter;
     border-color: transparent;
     .navbar-brand {
-        color: $theme-primary;
+        color: $theme-dark-primary;
         @include script-font;
         &:hover,
         &:focus,
         &:active,
         &.active {
             color: darken($theme-primary, 10%);
+        }
+
+        i {
+            color: $theme-success;
         }
     }
     .navbar-collapse {
@@ -125,12 +166,12 @@ h1, h2, h3, h4, h5, h6 {
     .navbar-nav>.active>a {
         border-radius: 0;
         color: white;
-        background-color: $theme-primary;
+        background-color: $theme-dark-primary;
     }
     .navbar-nav>.active>a:hover,
     .navbar-nav>.active>a:focus {
         color: white;
-        background-color: darken($theme-primary, 10%);
+        background-color: darken($theme-dark-primary, 10%);
     }
 }
 
@@ -158,16 +199,17 @@ h1, h2, h3, h4, h5, h6 {
 
 @media(min-width:768px) {
     .navbar-custom.affix {
-        background-color: $gray-darker;
+        background-color: $gray;
         padding: 10px 0;
         .navbar-brand {
             font-size: 1.5em;
+            // color: $theme-primary;
         }
     }
 }
 
 header {
-    background-image: url('../img/header-bg.jpg');
+    background-image: url('../img/header-bg-6.jpeg');
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -175,21 +217,39 @@ header {
     text-align: center;
     color: white;
     .intro-text {
-        padding-top: 100px;
-        padding-bottom: 50px;
-        .intro-lead-in {
-            @include serif-font;
-            font-style: italic;
-            font-size: 22px;
-            line-height: 22px;
-            margin-bottom: 25px;
-        }
+        margin-top: 80px;
+        margin-bottom: 30px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: rgba(130, 128, 138, 0.6);
+        // background-color: rgba(123, 126, 139, 0.6);
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px 0px rgba(130, 128, 138, 1.0);
         .intro-heading {
             @include heading-font;
-            font-weight: 700;
+            // font-weight: 700;
             font-size: 50px;
             line-height: 50px;
+            margin-bottom: 10px;
+        }
+        .intro-slogan {
+            @include serif-font;
+            font-size: 20px;
+            line-height: 25px;
+            margin-bottom: 15px;
+        }
+        .intro-lead-in {
+            @include body-font;
+            font-size: 14px;
+            line-height: 25px;
             margin-bottom: 25px;
+            letter-spacing: 1.5px; 
+        }
+        .btn {
+            margin-left: 10px;
+            &:first-child {
+                margin-left: 0;
+            }
         }
     }
 }
@@ -197,21 +257,30 @@ header {
 @media(min-width:768px) {
     header {
         .intro-text {
-            padding-top: 300px;
-            padding-bottom: 200px;
-            .intro-lead-in {
-                @include serif-font;
-                font-style: italic;
-                font-size: 40px;
-                line-height: 40px;
-                margin-bottom: 25px;
-            }
+            margin-top: 250px;
+            margin-bottom: 150px;
+            padding-top: 50px;
+            padding-bottom: 50px;
             .intro-heading {
                 @include heading-font;
-                font-weight: 700;
+                // font-weight: 700;
                 font-size: 75px;
                 line-height: 75px;
-                margin-bottom: 50px;
+                margin-bottom: 10px;
+            }
+            .intro-slogan {
+                @include serif-font;
+                // font-style: italic;
+                font-size: 32px;
+                line-height: 25px;
+                margin-bottom: 35px;
+            }
+            .intro-lead-in {
+                @include body-font;
+                font-size: 16px;
+                line-height: 25px;
+                margin-bottom: 35px;
+                letter-spacing: 2px;
             }
         }
     }
@@ -562,22 +631,22 @@ section#contact {
     ::-webkit-input-placeholder {
        @include heading-font;
        font-weight: 700;
-       color: $gray-lighter;
+       color: $gray-light;
     }
     :-moz-placeholder { /* Firefox 18- */
        @include heading-font;
        font-weight: 700;
-       color: $gray-lighter;
+       color: $gray-light;
     }
     ::-moz-placeholder {  /* Firefox 19+ */
        @include heading-font;
        font-weight: 700;
-       color: $gray-lighter;
+       color: $gray-light;
     }
     :-ms-input-placeholder {  
        @include heading-font;
        font-weight: 700;
-       color: $gray-lighter;
+       color: $gray-light;
     }
     .text-danger {
         color: $theme-danger;

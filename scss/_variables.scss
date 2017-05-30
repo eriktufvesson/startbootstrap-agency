@@ -2,12 +2,14 @@
 
 // Gray and Brand Colors for use across theme
 
-$theme-primary:    #fed136;
-$theme-danger:     #e74c3c;
+$theme-primary:    #37718E;
+$theme-dark-primary: #254E70;
+$theme-danger:     #9D1C29;
+$theme-success:     #B0202E;
 
 $gray-base:			#000 !default;
 $gray-darker:		lighten($gray-base, 13.5%) !default; // #222
 $gray-dark:			lighten($gray-base, 20%) !default;   // #333
-$gray:				lighten($gray-base, 33.5%) !default; // #555
+$gray:				  rgba(130, 128, 138, 0.9) !default;// lighten($gray-base, 33.5%) !default; // #555
 $gray-light:		lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:		lighten($gray-base, 93.5%) !default; // #eee

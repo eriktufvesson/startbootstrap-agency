@@ -21,6 +21,7 @@ $(function() {
             }
             $.ajax({
                 url: "././mail/contact_me.php",
+                // url: "https://formspree.io/erik.tufvesson@gmail.com",
                 type: "POST",
                 data: {
                     name: name,
@@ -35,14 +36,15 @@ $(function() {
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
                     $('#success > .alert-success')
-                        .append("<strong>Your message has been sent. </strong>");
+                        .append("<strong>Tack för ditt meddelande! Jag kontaktar dig så snart jag kan.</strong>");
                     $('#success > .alert-success')
                         .append('</div>');
 
                     //clear all fields
                     $('#contactForm').trigger("reset");
                 },
-                error: function() {
+                error: function(err) {
+                    console.log(err);
                     // Fail message
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
