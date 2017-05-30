@@ -1,11 +1,11 @@
 var gulp = require('gulp');
-// var less = require('gulp-less');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var header = require('gulp-header');
 var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
+var clean = require('gulp-rimraf');
 var pkg = require('./package.json');
 
 // Set the banner content
@@ -17,17 +17,6 @@ var banner = ['/*!\n',
     ''
 ].join('');
 
-// Compile LESS files from /less into /css
-// gulp.task('less', function() {
-//     return gulp.src('less/agency.less')
-//         .pipe(less())
-//         .pipe(header(banner, { pkg: pkg }))
-//         .pipe(gulp.dest('css'))
-//         .pipe(browserSync.reload({
-//             stream: true
-//         }))
-// });
-
 // Minify compiled CSS
 gulp.task('minify-css', ['sass'], function() {
     return gulp.src('css/agency.css')
@@ -36,39 +25,46 @@ gulp.task('minify-css', ['sass'], function() {
         .pipe(gulp.dest('css'))
         .pipe(browserSync.reload({
             stream: true
-        }))
+        }));
 });
 
 // Minify JS
 gulp.task('minify-js', function() {
-    return gulp.src('js/agency.js')
+    return gulp.src(['js/agency.js', 'js/contact_me.js', 'js/jqBootstrapValidation.js'])
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('js'))
         .pipe(browserSync.reload({
             stream: true
-        }))
+        }));
+});
+
+gulp.task('clean', [], function() {
+  return gulp.src("dist/*", { read: false }).pipe(clean());
 });
 
 // Copy vendor libraries from /node_modules into /vendor
-gulp.task('copy', function() {
-    gulp.src(['node_modules/bootstrap/dist/**/*', '!**/npm.js', '!**/bootstrap-theme.*', '!**/*.map'])
-        .pipe(gulp.dest('vendor/bootstrap'))
-
-    gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
-        .pipe(gulp.dest('vendor/jquery'))
-
+gulp.task('copy-dist', ['clean'], function() {
+    gulp.src(['vendor/font-awesome/fonts/**'])
+        .pipe(gulp.dest('dist/vendor/font-awesome/fonts'));
+    gulp.src(['vendor/bootstrap-sass/assets/javascripts/bootstrap.min.js'])
+        .pipe(gulp.dest('dist/vendor/bootstrap-sass/assets/javascripts'));
+    gulp.src(['vendor/jquery/dist/jquery.min.js'])
+        .pipe(gulp.dest('dist/vendor/jquery/dist'));
+    gulp.src(['vendor/jquery.easing/js/jquery.easing.min.js'])
+        .pipe(gulp.dest('dist/vendor/jquery.easing/js'));
     gulp.src([
-            'node_modules/font-awesome/**',
-            '!node_modules/font-awesome/**/*.map',
-            '!node_modules/font-awesome/.npmignore',
-            '!node_modules/font-awesome/*.txt',
-            '!node_modules/font-awesome/*.md',
-            '!node_modules/font-awesome/*.json'
-        ])
-        .pipe(gulp.dest('vendor/font-awesome'))
-})
+        '**/*.html',
+        'favicon*',
+        '**/*.min.css',
+        '**/*.min.js',
+        '**/*.php',
+        '**/img/**',
+        '!node_modules/**',
+        '!vendor/**'
+    ]).pipe(gulp.dest('dist'));
+});
 
 // Run everything
 gulp.task('default', ['sass', 'minify-css', 'minify-js', 'copy']);
@@ -79,8 +75,8 @@ gulp.task('browserSync', function() {
         server: {
             baseDir: ''
         },
-    })
-})
+    });
+});
 
 // Dev task with browserSync
 gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() {
@@ -100,5 +96,5 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('css'))
         .pipe(browserSync.reload({
             stream: true
-        }))
+        }));
 });
