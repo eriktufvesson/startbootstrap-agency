@@ -6464,7 +6464,8 @@ a.active {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700; }
+  color: #254E70;
+  font-weight: 400; }
 
 .img-centered {
   margin: 0 auto; }
@@ -6653,6 +6654,59 @@ h1, h2, h3, h4, h5, h6 {
       padding: 15px 20px;
       font-size: 16px; } }
 
+.btn-xl-outline {
+  color: white;
+  background-color: transparent;
+  border-color: transparent;
+  font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 20px 40px; }
+  .btn-xl-outline:focus, .btn-xl-outline.focus {
+    color: white;
+    background-color: transparent;
+    border-color: transparent; }
+  .btn-xl-outline:hover {
+    color: white;
+    background-color: transparent;
+    border-color: transparent; }
+  .btn-xl-outline:active, .btn-xl-outline.active,
+  .open > .btn-xl-outline.dropdown-toggle {
+    color: white;
+    background-color: transparent;
+    border-color: transparent; }
+    .btn-xl-outline:active:hover, .btn-xl-outline:active:focus, .btn-xl-outline:active.focus, .btn-xl-outline.active:hover, .btn-xl-outline.active:focus, .btn-xl-outline.active.focus,
+    .open > .btn-xl-outline.dropdown-toggle:hover,
+    .open > .btn-xl-outline.dropdown-toggle:focus,
+    .open > .btn-xl-outline.dropdown-toggle.focus {
+      color: white;
+      background-color: transparent;
+      border-color: transparent; }
+  .btn-xl-outline:active, .btn-xl-outline.active,
+  .open > .btn-xl-outline.dropdown-toggle {
+    background-image: none; }
+  .btn-xl-outline.disabled:hover, .btn-xl-outline.disabled:focus, .btn-xl-outline.disabled.focus, .btn-xl-outline[disabled]:hover, .btn-xl-outline[disabled]:focus, .btn-xl-outline[disabled].focus,
+  fieldset[disabled] .btn-xl-outline:hover,
+  fieldset[disabled] .btn-xl-outline:focus,
+  fieldset[disabled] .btn-xl-outline.focus {
+    background-color: transparent;
+    border-color: transparent; }
+  .btn-xl-outline .badge {
+    color: transparent;
+    background-color: white; }
+  .btn-xl-outline i {
+    margin-left: 4px; }
+  .btn-xl-outline:hover, .btn-xl-outline:active {
+    border-color: white;
+    background-color: #555555; }
+  @media (max-width: 767px) {
+    .btn-xl-outline {
+      padding: 15px 20px;
+      font-size: 16px; } }
+
 .navbar-custom {
   background-color: #eeeeee;
   border-color: transparent; }
@@ -6727,7 +6781,7 @@ h1, h2, h3, h4, h5, h6 {
       color: white; } }
 
 header {
-  background-image: url("../img/header-bg-6.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.45)), url("../img/header-bg-6.jpeg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -6738,13 +6792,11 @@ header {
   text-align: center;
   color: white; }
   header .intro-text {
+    z-index: 10;
     margin-top: 80px;
     margin-bottom: 30px;
     padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: rgba(130, 128, 138, 0.6);
-    border-radius: 15px;
-    box-shadow: 0px 0px 20px 0px #82808a; }
+    padding-bottom: 20px; }
     header .intro-text .intro-heading {
       font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 50px;
@@ -6768,8 +6820,8 @@ header {
 
 @media (min-width: 768px) {
   header .intro-text {
-    margin-top: 250px;
-    margin-bottom: 150px;
+    margin-top: 125px;
+    margin-bottom: 75px;
     padding-top: 50px;
     padding-bottom: 50px; }
     header .intro-text .intro-heading {
@@ -6790,7 +6842,7 @@ header {
       letter-spacing: 2px; } }
 
 section {
-  padding: 100px 0; }
+  padding: 50px 0; }
   section h2.section-heading {
     font-size: 40px;
     margin-top: 0;
@@ -6801,11 +6853,11 @@ section {
     text-transform: none;
     font-style: italic;
     font-weight: 400;
-    margin-bottom: 75px; }
+    margin-bottom: 30px; }
 
 @media (min-width: 768px) {
   section {
-    padding: 150px 0; } }
+    padding: 75px 0; } }
 
 #services .service-heading {
   margin: 15px 0;
@@ -7025,10 +7077,12 @@ aside.clients img {
 
 section#contact {
   background-color: #222222;
-  background-image: url("../img/map-image.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/contact-bg.jpg");
   background-position: center;
   background-repeat: no-repeat; }
   section#contact .section-heading {
+    color: white; }
+  section#contact h3.section-subheading {
     color: white; }
   section#contact .form-group {
     margin-bottom: 25px; }
@@ -7064,8 +7118,15 @@ section#contact {
     color: #9D1C29; }
 
 footer {
-  padding: 25px 0;
+  padding: 0;
   text-align: center; }
+  footer h3 {
+    margin-top: 0; }
+    footer h3 i {
+      color: #B0202E; }
+  footer .container {
+    padding: 25px 0;
+    width: 100% !important; }
   footer span.copyright {
     line-height: 40px;
     font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;

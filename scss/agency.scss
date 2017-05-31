@@ -54,7 +54,8 @@ a.active {
 
 h1, h2, h3, h4, h5, h6 {
     @include heading-font;
-    font-weight: 700;
+    color: $theme-dark-primary;
+    font-weight: 400;
 }
 
 .img-centered {
@@ -115,6 +116,31 @@ h1, h2, h3, h4, h5, h6 {
 
     i {
         margin-left: 4px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+}
+
+.btn-xl-outline {
+    @include button-variant(white, transparent, transparent);
+    @include body-font;
+    text-transform: uppercase;
+    font-weight: 400;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 20px 40px;
+
+    i {
+        margin-left: 4px;
+    }
+
+    &:hover, &:active {
+        border-color: white;
+        background-color: $gray;
     }
 
     @media (max-width: $screen-xs-max) {
@@ -244,7 +270,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header {
-    background-image: url('../img/header-bg-6.jpeg');
+    background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.45) ), url('../img/header-bg-6.jpeg');
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -252,14 +278,15 @@ header {
     text-align: center;
     color: white;
     .intro-text {
+        z-index: 10;
         margin-top: 80px;
         margin-bottom: 30px;
         padding-top: 20px;
         padding-bottom: 20px;
-        background-color: rgba(130, 128, 138, 0.6);
-        // background-color: rgba(123, 126, 139, 0.6);
-        border-radius: 15px;
-        box-shadow: 0px 0px 20px 0px rgba(130, 128, 138, 1.0);
+        // background-color: rgba(130, 128, 138, 0.6);
+        // // background-color: rgba(123, 126, 139, 0.6);
+        // border-radius: 15px;
+        // box-shadow: 0px 0px 20px 0px rgba(130, 128, 138, 1.0);
         .intro-heading {
             @include heading-font;
             // font-weight: 700;
@@ -292,8 +319,8 @@ header {
 @media(min-width:768px) {
     header {
         .intro-text {
-            margin-top: 250px;
-            margin-bottom: 150px;
+            margin-top: 125px;
+            margin-bottom: 75px;
             padding-top: 50px;
             padding-bottom: 50px;
             .intro-heading {
@@ -324,7 +351,7 @@ header {
 // Global Section Styles
 
 section {
-    padding: 100px 0;
+    padding: 50px 0;
     h2.section-heading {
         font-size: 40px;
         margin-top: 0;
@@ -336,13 +363,13 @@ section {
         text-transform: none;
         font-style: italic;
         font-weight: 400;
-        margin-bottom: 75px;
+        margin-bottom: 30px;
     }
 }
 
 @media(min-width: $screen-sm-min) {
     section {
-        padding: 150px 0;
+        padding: 75px 0;
     }
 }
 
@@ -653,10 +680,13 @@ aside.clients {
 
 section#contact {
     background-color: $gray-darker;
-    background-image: url('../img/map-image.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/contact-bg.jpg');
     background-position: center;
     background-repeat: no-repeat;
     .section-heading {
+        color: white;
+    }
+    h3.section-subheading {
         color: white;
     }
     .form-group {
@@ -704,8 +734,18 @@ section#contact {
 // Footer
 
 footer {
-    padding: 25px 0;
+    padding: 0;
     text-align: center;
+    h3 {
+        margin-top: 0;
+        i {
+            color: $theme-success;
+        }
+    }
+    .container {
+        padding: 25px 0;
+        width: 100% !important;
+    }
     span.copyright {
         line-height: 40px;
         @include heading-font;
