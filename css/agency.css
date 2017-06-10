@@ -7118,15 +7118,18 @@ section#contact {
     color: #9D1C29; }
 
 footer {
-  padding: 0;
+  padding: 25px 0;
   text-align: center; }
   footer h3 {
     margin-top: 0; }
     footer h3 i {
       color: #B0202E; }
-  footer .container {
-    padding: 25px 0;
-    width: 100% !important; }
+  footer .row {
+    margin: 10px 0 0; }
+  footer .container:last-child .row {
+    border-top: 1px solid #37718E;
+    margin-top: 0;
+    padding-top: 10px; }
   footer span.copyright {
     line-height: 40px;
     font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
