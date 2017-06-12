@@ -6441,10 +6441,12 @@ body {
 
 p {
   font-size: 14px;
-  line-height: 1.75; }
+  line-height: 1.75;
+  letter-spacing: 1px; }
 
 p.large {
-  font-size: 16px; }
+  font-size: 16px;
+  letter-spacing: 1.1px; }
 
 a,
 a:hover,
@@ -6711,6 +6713,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   padding: 15px 20px;
   font-weight: 700;
+  letter-spacing: 1.1px;
   color: white;
   text-align: center;
   background-color: #B0202E; }
@@ -6807,7 +6810,7 @@ h1, h2, h3, h4, h5, h6 {
       color: white; } }
 
 header {
-  background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.65)), url("../img/header-bg-6.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65)), url("../img/header-bg-6.jpeg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -6838,9 +6841,7 @@ header {
       font-size: 14px;
       line-height: 25px;
       margin-bottom: 25px;
-      letter-spacing: 0.5px;
-      max-height: 180px;
-      overflow: hidden; }
+      letter-spacing: 0.5px; }
     header .intro-text .btn {
       margin-left: 10px; }
       header .intro-text .btn:first-child {
@@ -7115,6 +7116,13 @@ section#contact {
     color: white; }
   section#contact h3.section-subheading {
     color: white; }
+  section#contact p {
+    color: white; }
+    section#contact p a {
+      color: white;
+      text-decoration: underline; }
+      section#contact p a:hover {
+        color: #37718E; }
   section#contact .form-group {
     margin-bottom: 25px; }
     section#contact .form-group input,
@@ -7260,6 +7268,45 @@ ul.social-buttons {
 .portfolio-modal .modal-backdrop {
   opacity: 0;
   display: none; }
+
+.portfolio-modal .form-group {
+  margin-bottom: 25px; }
+  .portfolio-modal .form-group input,
+  .portfolio-modal .form-group textarea {
+    padding: 20px; }
+  .portfolio-modal .form-group input.form-control {
+    height: auto; }
+  .portfolio-modal .form-group textarea.form-control {
+    height: 236px; }
+
+.portfolio-modal .form-control:focus {
+  border-color: #37718E;
+  box-shadow: none; }
+
+.portfolio-modal ::-webkit-input-placeholder {
+  font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #777777; }
+
+.portfolio-modal :-moz-placeholder {
+  /* Firefox 18- */
+  font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #777777; }
+
+.portfolio-modal ::-moz-placeholder {
+  /* Firefox 19+ */
+  font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #777777; }
+
+.portfolio-modal :-ms-input-placeholder {
+  font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #777777; }
+
+.portfolio-modal .text-danger {
+  color: #9D1C29; }
 
 ::-moz-selection {
   text-shadow: none;
