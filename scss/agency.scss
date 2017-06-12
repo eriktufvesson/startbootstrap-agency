@@ -149,6 +149,20 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.teaser {
+    display: block;
+    padding: 15px 20px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    background-color: $theme-success;
+
+    &:hover, &:active {
+        color: white;
+        text-decoration: underline;
+    }
+}
+
 // Custom Navigation Bar
 
 .navbar-custom {
@@ -164,8 +178,22 @@ h1, h2, h3, h4, h5, h6 {
             color: darken($theme-primary, 10%);
         }
 
+        .brand-wrapper {
+            float: left;
+            padding: 0 0 0 7px;
+        }
+
         i {
             color: $theme-success;
+            font-size: 1.6em;
+            float: left;
+        }
+
+        .byline {
+            display: block;
+            clear: both;
+            font-size: 0.49em;
+            line-height: 0.75em;
         }
     }
     .navbar-collapse {
@@ -225,6 +253,13 @@ h1, h2, h3, h4, h5, h6 {
             -webkit-transition: all 0.3s;
             -moz-transition: all 0.3s;
             transition: all 0.3s;
+
+            .brand-wrapper {
+                padding: 3px 0 0 10px;
+            }
+            .byline {
+                line-height: 2em;
+            }
         }
         .navbar-nav>.active>a {
             border-radius: 3px;
@@ -245,9 +280,10 @@ h1, h2, h3, h4, h5, h6 {
     .navbar-custom.affix {
         background-color: $gray-lighter;
         padding: 10px 0;
+
         .navbar-brand {
-            font-size: 1.5em;
-            // color: $theme-primary;
+            font-size: 1.7em;
+            padding: 5px 15px;
         }
 
         .nav {
@@ -270,7 +306,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header {
-    background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.45) ), url('../img/header-bg-6.jpeg');
+    background: linear-gradient( rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-6.jpeg');
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -305,7 +341,10 @@ header {
             font-size: 14px;
             line-height: 25px;
             margin-bottom: 25px;
-            letter-spacing: 1.5px; 
+            letter-spacing: 0.5px; 
+
+            max-height: 180px;
+            overflow: hidden;
         }
         .btn {
             margin-left: 10px;
@@ -339,10 +378,14 @@ header {
             }
             .intro-lead-in {
                 @include body-font;
+                width: 700px;
+                margin: 0 auto;
                 font-size: 16px;
                 line-height: 25px;
                 margin-bottom: 35px;
-                letter-spacing: 2px;
+                letter-spacing: 1.5px;
+
+                max-height: auto;
             }
         }
     }
@@ -753,10 +796,6 @@ footer {
             padding-top: 10px;
         }
     }
-    // .container {
-    //     padding: 25px 0;
-    //     width: 100% !important;
-    // }
     span.copyright {
         line-height: 40px;
         @include heading-font;
