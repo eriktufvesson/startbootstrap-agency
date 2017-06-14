@@ -30,4 +30,9 @@
         }
     })
 
+    $('.readmore').click(function() {
+        $(this).hide();
+        $(this).parent().find('.more').fadeIn();
+    });
+
 })(jQuery); // End of use strict
