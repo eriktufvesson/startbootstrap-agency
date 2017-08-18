@@ -11,7 +11,7 @@
     <meta name="keywords" content="Stilcoach, Personlig stil, Coaching, Inspiration, Workshop, Personlig coachning">
     <meta name="author" content="">
 
-    <title>Gratis guide till garderobsgenomgång | Dress by heart</title>
+    <title>Bokningsförfrågan | Dress by heart</title>
 
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
@@ -35,7 +35,7 @@
 
 </head>
 
-<body id="page-top" class="garderoben">
+<body id="page-top" class="boka">
 
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -47,7 +47,7 @@
                 </button>
                 <a class="navbar-brand page-scroll" href="/">
                     <i class="fa fa-heart"></i>
-                    <div class="brand-wrapper white">
+                    <div class="brand-wrapper">
                         <span class="brand">
                             Dress by heart
                         </span>
@@ -70,8 +70,8 @@
                     <li>
                         <a class="page-scroll" href="/#suggestions">Förslag</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="/boka">Boka</a>
+                    <li class="active">
+                        <a class="page-scroll" href="boka">Boka</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="/#about">Om mig</a>
@@ -91,37 +91,41 @@
         <div class="container">
             <div class="intro-text">
                 <div class="intro-heading">
-                    <h1>Gratis guide till garderobs&shy;genomgång</h1>
+                    <h1>Boknings&shy;förfrågan</h1>
                 </div>
                 <div class="intro-slogan"></div>
                 <div class="intro-lead-in">
                     <p class="large">
-                        Jag vill att alla ska må bra i sina kläder och få en bra start på dagen när man står framför sin garderob. En garderobsgenomgång är det första steget för att skapa en personlig stil och garderob som passar din livsstil. Därför har jag skrivit en steg-för-steg guide som tar dig från kaos till personlig stil. 
-                    </p>
-                    <p class="large">
-                        Fyll i ditt namn och din e-mail så får du denna guide gratis till din mailbox. 
+                        Du är varmt välkommen att skicka in en bokningsförfrågan. Fyll i formuläret nedan så återkommer jag till dig så snart som möjligt. 
                     </p>
                 </div>
-                <form name="garderoben" id="garderobenForm">
+                <form name="booking" id="bookingForm">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text" name="Namn" class="form-control input-xl" placeholder="Ditt namn *" id="name" required data-validation-required-message="Please enter your name.">
                                 <p class="help-block text-danger"></p>
                             </div>
-                        </div>
-                        <div class="col-md-5">
                             <div class="form-group">
                                 <input type="email" name="E-post" class="form-control input-xl" placeholder="Din e-postadress *" id="email" required data-validation-required-message="Please enter your email address.">
                                 <p class="help-block text-danger"></p>
                             </div>
-                        </div>
-                        <div class="col-md-2">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-xl-success">
+                                <input type="tel" name="Telefon" class="form-control input-xl" placeholder="Ditt telefonnummer *" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <textarea class="form-control input-xl" name="Meddelande" placeholder="Ditt meddelande *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12 text-center">
+                            <button type="submit" class="btn btn-xl-success">
                                 Skicka
                             </button>
-                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -174,7 +178,7 @@
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline quicklinks">
-                        <li><a href="/cookies.html" target="_blank">Cookie Policy</a></li>
+                        <li><a href="cookies.html" target="_blank">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -215,7 +219,7 @@
                     "message": "Denna webbplats använder cookies för att ge dig den bästa möjliga upplevelsen. ",
                     "dismiss": "Jag förstår!",
                     "link": "Mer info",
-                    "href": "cookies.html"
+                    "href": "/cookies.html"
                 }
             })
         });

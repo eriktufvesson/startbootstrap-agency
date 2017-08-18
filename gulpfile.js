@@ -110,7 +110,7 @@ gulp.task('copy-dist', [], function() {
         '**/*.pdf',
         '**/*.html'
     ])
-        .pipe(changed('dist'))
+        // .pipe(changed('dist'))
         .pipe(gulp.dest('dist'));
     gulp.src(['dist/**/*.html'])
         .pipe(cachebust({type: 'timestamp'}))

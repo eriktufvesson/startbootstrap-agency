@@ -45,8 +45,6 @@ $(function() {
 
                     // Fail message
                     $('#bookingForm #success').html("<div class='alert alert-danger'>");
-                    $('#bookingForm #success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
                     $('#bookingForm #success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
                     $('#bookingForm #success > .alert-danger').append('</div>');
                     // clear all fields
@@ -77,7 +75,7 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "././mail/contact_me.php",
+                url: "../mail/contact_me.php",
                 type: "POST",
                 data: {
                     name: name,
@@ -89,8 +87,6 @@ $(function() {
                 success: function() {
                     // Success message
                     $('#bookingForm #success').html("<div class='alert alert-success'>");
-                    $('#bookingForm #success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
                     $('#bookingForm #success > .alert-success')
                         .append("<strong>Tack för ditt meddelande! Jag kontaktar dig så snart jag kan.</strong>");
                     $('#bookingForm #success > .alert-success')
@@ -108,8 +104,6 @@ $(function() {
 
                     // Fail message
                     $('#bookingForm #success').html("<div class='alert alert-danger'>");
-                    $('#bookingForm #success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
                     $('#bookingForm #success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
                     $('#bookingForm #success > .alert-danger').append('</div>');
                     // clear all fields
@@ -152,8 +146,6 @@ $(function() {
                 success: function() {
                     // Success message
                     $('#contactForm #success').html("<div class='alert alert-success'>");
-                    $('#contactForm #success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
                     $('#contactForm #success > .alert-success')
                         .append("<strong>Tack för ditt meddelande! Jag kontaktar dig så snart jag kan.</strong>");
                     $('#contactForm #success > .alert-success')
@@ -166,8 +158,6 @@ $(function() {
                     console.log(err);
                     // Fail message
                     $('#contactForm #success').html("<div class='alert alert-danger'>");
-                    $('#contactForm #success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
                     $('#contactForm #success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
                     $('#contactForm #success > .alert-danger').append('</div>');
                     //clear all fields

@@ -6717,6 +6717,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px;
   height: 67px; }
 
+textarea.input-xl {
+  height: 231px; }
+
 .teaser {
   display: block;
   padding: 15px 20px;
@@ -6764,7 +6767,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
-    color: #37718E; }
+    color: #37718E;
+    padding-left: 10px;
+    padding-right: 10px; }
     .navbar-custom .nav li a:hover, .navbar-custom .nav li a:focus {
       color: white;
       outline: none;
@@ -6862,8 +6867,11 @@ header {
       header .intro-text .btn:first-child {
         margin-left: 0; }
 
-header.garderoben {
+.garderoben header {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65)), url("../img/header-garderoben-2.jpg"); }
+
+.boka header {
+  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65)), url("../img/header-bg-boka.jpg"); }
 
 @media (min-width: 768px) {
   header .intro-text {

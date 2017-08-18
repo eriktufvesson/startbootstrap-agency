@@ -160,6 +160,9 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px;
     height: 67px;
 }
+textarea.input-xl {
+    height: 231px;
+}
 
 .teaser {
     display: block;
@@ -231,6 +234,8 @@ h1, h2, h3, h4, h5, h6 {
                 font-weight: 400;
                 letter-spacing: 1px;
                 color: $theme-primary;
+                padding-left: 10px;
+                padding-right: 10px;
                 &:hover,
                 &:focus {
                     color: white;
@@ -382,8 +387,16 @@ header {
     }
 }
 
-header.garderoben {
-    background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-garderoben-2.jpg');
+.garderoben {
+    header {
+        background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-garderoben-2.jpg');
+    }
+}
+
+.boka {
+    header {
+        background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-boka.jpg');
+    }
 }
 
 @media(min-width:768px) {
