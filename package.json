@@ -8,13 +8,17 @@
   "devDependencies": {
     "browser-sync": "^2.13.0",
     "gulp": "^3.9.1",
+    "gulp-cache-bust": "^1.1.0",
+    "gulp-changed": "^3.1.0",
     "gulp-clean-css": "^2.0.10",
     "gulp-header": "^1.8.7",
     "gulp-less": "^3.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-rimraf": "^0.2.1",
     "gulp-sass": "^2.3.2",
-    "gulp-uglify": "^1.5.4"
+    "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.8",
+    "vinyl-ftp": "^0.6.0"
   },
   "repository": {
     "type": "git",

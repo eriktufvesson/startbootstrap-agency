@@ -2,6 +2,63 @@
 
 $(function() {
 
+    $("#garderobenForm input,#garderobenForm textarea").jqBootstrapValidation({
+        preventSubmit: true,
+        submitError: function($form, event, errors) {
+            // additional error messages or events
+        },
+        submitSuccess: function($form, event) {
+            event.preventDefault(); // prevent default submit behaviour
+            // get values from FORM
+            var name = $("#garderobenForm input#name").val();
+            var email = $("#garderobenForm input#email").val();
+            var firstName = name; // For Success/Failure Message
+            // Check for white space in name for Success/Fail message
+            if (firstName.indexOf(' ') >= 0) {
+                firstName = name.split(' ').slice(0, -1).join(' ');
+            }
+            $.ajax({
+                url: "../mail/garderoben.php",
+                type: "POST",
+                data: {
+                    name: name,
+                    email: email
+                },
+                cache: false,
+                success: function() {
+                    // Success message
+                    $('#garderobenForm #success').html("<div class='alert alert-success'>");
+                    $('#garderobenForm #success > .alert-success')
+                        .append("<strong>Tack för ditt intresse! Guiden kommer skickas till din e-postadress.</strong>");
+                    $('#garderobenForm #success > .alert-success')
+                        .append('</div>');
+
+                    //clear all fields
+                    $('#bookingForm').trigger("reset");
+
+                    //hide submit button and show close button
+                    $('#bookingForm button[type=submit]').hide();
+                    $('#bookingForm button#close').show(); 
+                },
+                error: function(err) {
+                    console.log(err);
+
+                    // Fail message
+                    $('#bookingForm #success').html("<div class='alert alert-danger'>");
+                    $('#bookingForm #success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $('#bookingForm #success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
+                    $('#bookingForm #success > .alert-danger').append('</div>');
+                    // clear all fields
+                    // $('#bookingForm').trigger("reset");
+                },
+            });
+        },
+        filter: function() {
+            return $(this).is(":visible");
+        },
+    });
+
     $("#bookingForm input,#bookingForm textarea").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
@@ -121,11 +178,6 @@ $(function() {
         filter: function() {
             return $(this).is(":visible");
         },
-    });
-
-    $("a[data-toggle=\"tab\"]").click(function(e) {
-        e.preventDefault();
-        $(this).tab("show");
     });
 });
 

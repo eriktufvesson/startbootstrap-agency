@@ -155,6 +155,12 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.input-xl {
+    font-size: 18px;
+    padding: 20px;
+    height: 67px;
+}
+
 .teaser {
     display: block;
     padding: 15px 20px;
@@ -263,6 +269,10 @@ h1, h2, h3, h4, h5, h6 {
 
             .brand-wrapper {
                 padding: 3px 0 0 10px;
+
+                &.white {
+                    color: white !important;
+                }
             }
             .byline {
                 line-height: 2em;
@@ -291,6 +301,12 @@ h1, h2, h3, h4, h5, h6 {
         .navbar-brand {
             font-size: 1.7em;
             padding: 5px 15px;
+
+            .brand-wrapper {
+                &.white {
+                    color: $theme-dark-primary !important;
+                }
+            }
         }
 
         .nav {
@@ -333,8 +349,12 @@ header {
         .intro-heading {
             @include heading-font;
             // font-weight: 700;
-            font-size: 50px;
-            line-height: 50px;
+            h1 {
+                font-size: 50px;
+                line-height: 50px;
+                color: white;
+                margin: 0;
+            }
             margin-bottom: 10px;
         }
         .intro-slogan {
@@ -362,6 +382,10 @@ header {
     }
 }
 
+header.garderoben {
+    background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-garderoben-2.jpg');
+}
+
 @media(min-width:768px) {
     header {
         .intro-text {
@@ -372,8 +396,10 @@ header {
             .intro-heading {
                 @include heading-font;
                 // font-weight: 700;
-                font-size: 75px;
-                line-height: 75px;
+                h1 {
+                    font-size: 75px;
+                    line-height: 75px;
+                }
                 margin-bottom: 10px;
             }
             .intro-slogan {

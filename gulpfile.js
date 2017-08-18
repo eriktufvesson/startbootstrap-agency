@@ -6,7 +6,11 @@ var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var clean = require('gulp-rimraf');
+var cachebust = require('gulp-cache-bust');
+var ftp = require('vinyl-ftp');
+var gutil = require('gulp-util');
 var pkg = require('./package.json');
+var changed = require('gulp-changed');
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -44,28 +48,6 @@ gulp.task('clean', [], function() {
   return gulp.src("dist/*", { read: false }).pipe(clean());
 });
 
-// Copy vendor libraries from /node_modules into /vendor
-gulp.task('copy-dist', ['clean'], function() {
-    gulp.src(['vendor/font-awesome/fonts/**'])
-        .pipe(gulp.dest('dist/vendor/font-awesome/fonts'));
-    gulp.src(['vendor/bootstrap-sass/assets/javascripts/bootstrap.min.js'])
-        .pipe(gulp.dest('dist/vendor/bootstrap-sass/assets/javascripts'));
-    gulp.src(['vendor/jquery/dist/jquery.min.js'])
-        .pipe(gulp.dest('dist/vendor/jquery/dist'));
-    gulp.src(['vendor/jquery.easing/js/jquery.easing.min.js'])
-        .pipe(gulp.dest('dist/vendor/jquery.easing/js'));
-    gulp.src([
-        '**/*.html',
-        'favicon*',
-        '**/*.min.css',
-        '**/*.min.js',
-        '**/*.php',
-        '**/img/**',
-        '!node_modules/**',
-        '!vendor/**'
-    ]).pipe(gulp.dest('dist'));
-});
-
 // Run everything
 gulp.task('default', ['sass', 'minify-css', 'minify-js', 'copy']);
 
@@ -97,4 +79,57 @@ gulp.task('sass', function() {
         .pipe(browserSync.reload({
             stream: true
         }));
+});
+
+
+// Copy vendor libraries from /node_modules into /vendor
+gulp.task('copy-dist', [], function() {
+    gulp.src(['vendor/font-awesome/fonts/**'])
+        .pipe(gulp.dest('dist/vendor/font-awesome/fonts'));
+    gulp.src(['vendor/bootstrap-sass/assets/javascripts/bootstrap.min.js'])
+        .pipe(gulp.dest('dist/vendor/bootstrap-sass/assets/javascripts'));
+    gulp.src(['vendor/jquery/dist/jquery.min.js'])
+        .pipe(gulp.dest('dist/vendor/jquery/dist'));
+    gulp.src(['vendor/jquery.easing/js/jquery.easing.min.js'])
+        .pipe(gulp.dest('dist/vendor/jquery.easing/js'));
+    gulp.src(['vendor/composer/**/*'])
+        .pipe(gulp.dest('dist/vendor/composer'));
+    gulp.src(['vendor/phpmailer/**/*'])
+        .pipe(gulp.dest('dist/vendor/phpmailer'));
+    gulp.src(['vendor/autoload.php'])
+        .pipe(gulp.dest('dist/vendor'));
+    gulp.src([
+        '!dist/**',
+        '!node_modules/**',
+        '!vendor/**',
+        'favicon*',
+        '**/*.min.css',
+        '**/*.min.js',
+        '**/*.php',
+        '**/img/**',
+        '**/*.pdf',
+        '**/*.html'
+    ])
+        .pipe(changed('dist'))
+        .pipe(gulp.dest('dist'));
+    gulp.src(['dist/**/*.html'])
+        .pipe(cachebust({type: 'timestamp'}))
+        .pipe(gulp.dest('dist'));
+});
+
+// Deploy to ftp
+gulp.task('deploy', ['copy-dist'], function() {
+    var conn = ftp.create({
+        host: 'ftp.dressbyheart.se',
+        user: 'tyllnsro',
+        password: 'T9ec209eLv',
+        parallell: 10,
+        log: gutil.log
+    });
+
+    var globs = ['**'];
+
+    return gulp.src(globs, { cwd: './dist', base: './dist', buffer: false })
+        .pipe(conn.newer('/public_html'))
+        .pipe(conn.dest('/public_html'));
 });

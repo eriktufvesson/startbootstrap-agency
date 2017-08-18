@@ -6712,6 +6712,11 @@ h1, h2, h3, h4, h5, h6 {
       padding: 15px 20px;
       font-size: 16px; } }
 
+.input-xl {
+  font-size: 18px;
+  padding: 20px;
+  height: 67px; }
+
 .teaser {
   display: block;
   padding: 15px 20px;
@@ -6789,6 +6794,8 @@ h1, h2, h3, h4, h5, h6 {
       transition: all 0.3s; }
       .navbar-custom .navbar-brand .brand-wrapper {
         padding: 3px 0 0 10px; }
+        .navbar-custom .navbar-brand .brand-wrapper.white {
+          color: white !important; }
       .navbar-custom .navbar-brand .byline {
         line-height: 2em; }
     .navbar-custom .navbar-nav > .active > a {
@@ -6803,6 +6810,8 @@ h1, h2, h3, h4, h5, h6 {
     .navbar-custom.affix .navbar-brand {
       font-size: 1.7em;
       padding: 5px 15px; }
+      .navbar-custom.affix .navbar-brand .brand-wrapper.white {
+        color: #254E70 !important; }
     .navbar-custom.affix .nav li a {
       color: #37718E; }
       .navbar-custom.affix .nav li a:hover, .navbar-custom.affix .nav li a:focus {
@@ -6831,9 +6840,12 @@ header {
     padding-bottom: 20px; }
     header .intro-text .intro-heading {
       font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 50px;
-      line-height: 50px;
       margin-bottom: 10px; }
+      header .intro-text .intro-heading h1 {
+        font-size: 50px;
+        line-height: 50px;
+        color: white;
+        margin: 0; }
     header .intro-text .intro-slogan {
       font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 20px;
@@ -6850,6 +6862,9 @@ header {
       header .intro-text .btn:first-child {
         margin-left: 0; }
 
+header.garderoben {
+  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65)), url("../img/header-garderoben-2.jpg"); }
+
 @media (min-width: 768px) {
   header .intro-text {
     margin-top: 125px;
@@ -6858,9 +6873,10 @@ header {
     padding-bottom: 50px; }
     header .intro-text .intro-heading {
       font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 75px;
-      line-height: 75px;
       margin-bottom: 10px; }
+      header .intro-text .intro-heading h1 {
+        font-size: 75px;
+        line-height: 75px; }
     header .intro-text .intro-slogan {
       font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 32px;
