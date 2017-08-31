@@ -6731,6 +6731,8 @@ textarea.input-xl {
   .teaser:hover, .teaser:active {
     color: white;
     text-decoration: underline; }
+  .teaser.blue {
+    background-color: #254E70; }
 
 .navbar-custom {
   background-color: #eeeeee;
@@ -6847,8 +6849,8 @@ header {
       font-family: "Playfair Display SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
       margin-bottom: 10px; }
       header .intro-text .intro-heading h1 {
-        font-size: 50px;
-        line-height: 50px;
+        font-size: 40px;
+        line-height: 40px;
         color: white;
         margin: 0; }
     header .intro-text .intro-slogan {
@@ -6869,6 +6871,9 @@ header {
 
 .garderoben header {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65)), url("../img/header-garderoben-2.jpg"); }
+
+.anmalan header {
+  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65)), url("../img/header-bg-anmalan-1.jpg"); }
 
 .boka header {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65)), url("../img/header-bg-boka.jpg"); }

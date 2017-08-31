@@ -177,6 +177,10 @@ textarea.input-xl {
         color: white;
         text-decoration: underline;
     }
+
+    &.blue {
+        background-color: $theme-dark-primary;
+    }
 }
 
 // Custom Navigation Bar
@@ -355,8 +359,8 @@ header {
             @include heading-font;
             // font-weight: 700;
             h1 {
-                font-size: 50px;
-                line-height: 50px;
+                font-size: 40px;
+                line-height: 40px;
                 color: white;
                 margin: 0;
             }
@@ -390,6 +394,12 @@ header {
 .garderoben {
     header {
         background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-garderoben-2.jpg');
+    }
+}
+
+.anmalan {
+    header {
+        background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-anmalan-1.jpg');
     }
 }
 
