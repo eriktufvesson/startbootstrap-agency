@@ -85,7 +85,7 @@ $app->post('/event/register', function (Request $request, Response $response) {
   $sth->execute();
   $data = $sth->fetchObject();
   if (intval($data->cnt) > 0) {
-    return $this->response->withJson(array('status' => false, 'message' => 'Email already registered'));
+    return $this->response->withJson(array('status' => false, 'message' => 'Du kan endast skicka in en anmälan per e-postadress.'));
   } 
 
   // Check if event is full and place in queue

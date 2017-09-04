@@ -1,12 +1,9 @@
 $(document).ready(function() {
-  console.log('anmälan page loaded');
 
   var event_route = location.hash.replace('#', '').replace('/', '');
-  console.log('event_route', event_route); 
   var scope = {};
 
   $.get('/api/event/' + event_route, function(data) {
-    console.log('event', data);
     scope.event = data;
 
     reloadPlacesLeft(scope.event.id);
@@ -14,7 +11,6 @@ $(document).ready(function() {
 
   function reloadPlacesLeft(event_id) {
     $.get('/api/event/places_left/' + event_id, function(data) {
-      console.log('places left', data.places_left);
       scope.places_left = data.places_left;
       $('.places-left').html(data.places_left);
     });
@@ -28,16 +24,17 @@ $(document).ready(function() {
     },
     submitSuccess: function($form, e) {
       e.preventDefault(); // prevent default submit behaviour
+      $('#anmalanForm button[type=submit]').prop('disabled', true);
       // get values from FORM
       var firstname = $("#anmalanForm input#firstname").val();
       var lastname = $("#anmalanForm input#lastname").val();
       var email = $("#anmalanForm input#email").val();
       var places = $("#anmalanForm input#places").val();
-      console.log('places left', scope.places_left, places, event);
       if (parseInt(places) > scope.places_left) {
         $('#anmalanForm #success').html("<div class='alert alert-danger'>");
         $('#anmalanForm #success > .alert-danger').append($("<strong>").text("Du kan inte registrera fler platser än det finns ledigt!"));
         $('#anmalanForm #success > .alert-danger').append('</div>');
+        $('#anmalanForm button[type=submit]').prop('disabled', false);
         return;
       }
       $.ajax({
@@ -50,7 +47,8 @@ $(document).ready(function() {
             nbr_places: places
           },
           cache: false,
-          success: function() {
+          success: function(res) {
+            if (res.status) {
               // Success message
               $('#anmalanForm #success').html("<div class='alert alert-success'>");
               $('#anmalanForm #success > .alert-success')
@@ -60,12 +58,15 @@ $(document).ready(function() {
 
               //clear all fields
               $('#anmalanForm').trigger("reset");
-
-              //hide submit button and show close button
-              $('#anmalanForm button[type=submit]').hide();
-              $('#anmalanForm button#close').show(); 
-
+              
               reloadPlacesLeft(scope.event.id);
+            }
+            else {
+              // Error message
+              $('#anmalanForm #success').html("<div class='alert alert-danger'>");
+              $('#anmalanForm #success > .alert-danger').append($("<strong>").text(res.message));
+              $('#anmalanForm #success > .alert-danger').append('</div>');
+            }
           },
           error: function(err) {
               console.log(err);
@@ -75,6 +76,9 @@ $(document).ready(function() {
               $('#anmalanForm #success > .alert-danger').append($("<strong>").text("Sorry " + firstname + ", it seems that my mail server is not responding. Please try again later!"));
               $('#anmalanForm #success > .alert-danger').append('</div>');
           },
+          complete: function() {
+            $('#anmalanForm button[type=submit]').prop('disabled', false);
+          }
       });
     },
     filter: function() {
