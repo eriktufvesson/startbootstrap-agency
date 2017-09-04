@@ -30,7 +30,7 @@ $(document).ready(function() {
       var lastname = $("#anmalanForm input#lastname").val();
       var email = $("#anmalanForm input#email").val();
       var places = $("#anmalanForm input#places").val();
-      if (parseInt(places) > scope.places_left) {
+      if (scope.places_left > 0 && parseInt(places) > scope.places_left) {
         $('#anmalanForm #success').html("<div class='alert alert-danger'>");
         $('#anmalanForm #success > .alert-danger').append($("<strong>").text("Du kan inte registrera fler platser än det finns ledigt!"));
         $('#anmalanForm #success > .alert-danger').append('</div>');
