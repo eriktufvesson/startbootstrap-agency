@@ -8,10 +8,14 @@ require '../vendor/autoload.php';
 $config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
 
-$config['db']['host']   = "localhost";
-$config['db']['user']   = "dressbyheart";
-$config['db']['pass']   = "secret";
-$config['db']['dbname'] = "dressbyheart_slim";
+// $config['db']['host']   = "localhost";
+// $config['db']['user']   = "dressbyheart";
+// $config['db']['pass']   = "secret"; // afexq43gq53!ds
+// $config['db']['dbname'] = "dressbyheart_slim";
+$config['db']['host']   = "185.76.64.172";
+$config['db']['user']   = "tyllnsro_dressbyheart";
+$config['db']['pass']   = "afexq43gq53!ds"; // 
+$config['db']['dbname'] = "tyllnsro_dressbyheart";
 
 $app = new \Slim\App(['settings' => $config]);
 
