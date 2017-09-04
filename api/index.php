@@ -115,7 +115,13 @@ $app->post('/event/register', function (Request $request, Response $response) {
   $registration['id'] = $this->db->lastInsertId();
 
   // Send confimation email
-  sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Anmälan till inspirationsföreläsning i Lund $event->date", 'anmalan.html');
+  if (!$queue) {
+    sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Anmälan till inspirationsföreläsning i Lund $event->date", 'anmalan.html');
+  }
+  else {
+    // Send queue email instead
+    sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Anmälan till inspirationsföreläsning i Lund $event->date", 'anmalan-queue.html');
+  }
 
   // Send email to admin
   sendEmail('no-reply@dressbyheart.se', 'Dress by heart', 'info@dressbyheart.se', '', 'Anmälan inspirationsföreläsning id: ' + $event_id, "Namn: $name\nE-postadress: $email\nAntal platser: $nbr_places\Kö: $queue");
@@ -146,7 +152,7 @@ function sendEmail($from_email, $from_name, $to_email, $to_name, $subject, $body
   $mail->addAddress($to_email, $to_name);
   $mail->Subject = $subject;
   if (endsWith($body, '.html')) {
-    $mail->msgHTML(file_get_contents($body), dirname($_SERVER['DOCUMENT_ROOT'] . '/mail'));
+    $mail->msgHTML(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/mail/' . $body), dirname(__FILE__));
   }
   else {
     $mail->Body = $body;
@@ -157,11 +163,9 @@ function sendEmail($from_email, $from_name, $to_email, $to_name, $subject, $body
   }
   //send the message, check for errors
   if (!$mail->send()) {
-      echo "Mailer Error: " . $mail->ErrorInfo;
-      $status = FALSE;
+    $status = FALSE;
   } else {
-      echo "Message sent!";
-      $status = TRUE;
+    $status = TRUE;
   }
   return $status;
 }

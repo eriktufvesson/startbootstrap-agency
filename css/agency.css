@@ -6446,7 +6446,8 @@ p {
 
 p.large {
   font-size: 16px;
-  letter-spacing: 1.1px; }
+  letter-spacing: 1.1px;
+  margin: 20px 0; }
 
 a,
 a:hover,
@@ -6873,7 +6874,11 @@ header {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65)), url("../img/header-garderoben-2.jpg"); }
 
 .anmalan header {
-  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65)), url("../img/header-bg-anmalan-1.jpg"); }
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), url("../img/header-bg-anmalan-1.jpg"); }
+
+.anmalan .places-left {
+  font-size: 120%;
+  font-weight: bold; }
 
 .boka header {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65)), url("../img/header-bg-boka.jpg"); }

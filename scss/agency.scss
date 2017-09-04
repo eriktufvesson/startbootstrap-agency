@@ -33,6 +33,7 @@ p {
 p.large {
     font-size: 16px;
     letter-spacing: 1.1px;
+    margin: 20px 0;
 }
 
 a,
@@ -399,7 +400,18 @@ header {
 
 .anmalan {
     header {
-        background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-anmalan-1.jpg');
+        background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8) ), url('../img/header-bg-anmalan-1.jpg');
+    }
+
+    .places-left {
+        font-size: 120%;
+        font-weight: bold;
+    }
+
+    #anmalanForm {
+        .btn {
+            // float: right;
+        }
     }
 }
 

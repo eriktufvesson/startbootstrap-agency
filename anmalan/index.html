@@ -101,28 +101,42 @@
                         Jag vill att alla ska må bra i sina kläder och få en bra start på dagen när man står framför sin garderob. Under denna kväll kommer jag att ge er tips om hur ni kan hitta er personliga stil och bygga upp en garerob som passar just er livsstil. Jag tror starkt på att vi alla har våra egna svar på vad vi vill och vad vi tycker om och därför kommer jag under kvällen att ge er övningar och verktyg för att ni ska kunna hitta just er personliga stil. Inga regler. Din stil från hjärtat.  
                     </p>
                     <p class="large">
-                            Anmäl dig genom att fylla i ditt fullständiga namn samt e-postadress. Information om betalning skickas ut via e-post. Just nu finns det X platser kvar.
+                        Anmäl dig genom att fylla i ditt fullständiga namn samt e-postadress. Information om betalning skickas ut via e-post. Just nu finns det <span class="places-left"></span> platser kvar.
                     </p>
                 </div>
                 <form name="anmalan" id="anmalanForm">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" name="Namn" class="form-control input-xl" placeholder="Ditt namn *" id="name" required data-validation-required-message="Please enter your name.">
+                                <input type="text" name="Förnamn" class="form-control input-xl" placeholder="Förnamn *" id="firstname" required data-validation-required-message="Vänligen ange ditt förnamn.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <input type="email" name="E-post" class="form-control input-xl" placeholder="Din e-postadress *" id="email" required data-validation-required-message="Please enter your email address.">
+                                <input type="text" name="Efternamn" class="form-control input-xl" placeholder="Efternamn *" id="lastname" required data-validation-required-message="Vänligen ange ditt efternamn.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-xl-success">
-                                Skicka anmälan
-                            </button>
+                                <input type="email" name="E-post" class="form-control input-xl" placeholder="Din e-postadress *" id="email" required data-validation-required-message="Vänligen ange din e-postadress.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="number" name="Platser" class="form-control input-xl" placeholder="Antal platser *" id="places" required data-validation-required-message="Vänligen ange antal platser.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block btn-xl-success">
+                                    Skicka
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -133,12 +147,11 @@
                     </div>
                 </form>
                 <div class="intro-lead-in">
-                        <p class="large">
-                            Föreläsningen äger rum den 5 oktober kl 18.30-21.00 på Bantorget 5 i centrala Lund. Kvällen inkluderar en mingelpaus med enklare fika och kostnaden för kvällen är 295 kronor per person.
-                            Vi tillämpar först till kvarn principen och om det inte finns platser kvar får du gärna skicka in din anmälan för att kunna få en eventuell reservplats och få information om nästa inspirationsföreläsning.
-                            
-                        </p>
-                    </div>               
+                    <p class="large">
+                        Föreläsningen äger rum den 5 oktober kl 18.30-21.00 på Bantorget 5 i centrala Lund. Kvällen inkluderar en mingelpaus med enklare fika och kostnaden för kvällen är 295 kronor per person.
+                        Vi tillämpar först till kvarn principen och om det inte finns platser kvar får du gärna skicka in din anmälan för att kunna få en eventuell reservplats och få information om nästa inspirationsföreläsning.
+                    </p>
+                </div>               
             </div>
         </div>
     </header>
