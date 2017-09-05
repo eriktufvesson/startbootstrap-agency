@@ -96,6 +96,18 @@ gulp.task('copy-dist', [], function() {
         .pipe(gulp.dest('dist/vendor/composer'));
     gulp.src(['vendor/phpmailer/**/*'])
         .pipe(gulp.dest('dist/vendor/phpmailer'));
+    gulp.src(['vendor/monolog/**/*'])
+        .pipe(gulp.dest('dist/vendor/monolog'));
+    gulp.src(['vendor/nikic/**/*'])
+        .pipe(gulp.dest('dist/vendor/nikic'));
+    gulp.src(['vendor/pimple/**/*'])
+        .pipe(gulp.dest('dist/vendor/pimple'));
+    gulp.src(['vendor/psr/**/*'])
+        .pipe(gulp.dest('dist/vendor/psr'));
+        gulp.src(['vendor/container-interop/**/*'])
+            .pipe(gulp.dest('dist/vendor/container-interop'));
+    gulp.src(['vendor/slim/**/*'])
+        .pipe(gulp.dest('dist/vendor/slim'));
     gulp.src(['vendor/autoload.php'])
         .pipe(gulp.dest('dist/vendor'));
     gulp.src([
@@ -108,7 +120,8 @@ gulp.task('copy-dist', [], function() {
         '**/*.php',
         '**/img/**',
         '**/*.pdf',
-        '**/*.html'
+        '**/*.html',
+        '**/.htaccess'
     ])
         // .pipe(changed('dist'))
         .pipe(gulp.dest('dist'));
