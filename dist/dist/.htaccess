@@ -1,8 +1,0 @@
-RewriteEngine on
-
-RewriteCond %{SERVER_PORT} 80
-RewriteCond %{HTTP_HOST} ^dressbyheart\.com$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.dressbyheart\.com$
-RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
-RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule ^(.*)$ "https\:\/\/dressbyheart\.se\/$1" [R=301,L]
