@@ -83,7 +83,7 @@ gulp.task('sass', function() {
 
 
 // Copy vendor libraries from /node_modules into /vendor
-gulp.task('copy-dist', [], function() {
+gulp.task('copy-dist', ['minify-js', 'minify-css'], function() {
     gulp.src(['vendor/font-awesome/fonts/**'])
         .pipe(gulp.dest('dist/vendor/font-awesome/fonts'));
     gulp.src(['vendor/bootstrap-sass/assets/javascripts/bootstrap.min.js'])
