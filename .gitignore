@@ -2,3 +2,5 @@ node_modules
 vendor
 logs
 dist
+.DS_Store
+css
