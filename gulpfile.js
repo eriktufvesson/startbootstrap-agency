@@ -64,10 +64,10 @@ gulp.task('browserSync', function() {
 gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() {
     gulp.watch('scss/*.scss', ['sass']);
     gulp.watch('css/*.css', ['minify-css']);
-    gulp.watch('**/*.js', ['minify-js']);
+    gulp.watch('js/**/*.js', ['minify-js']);
     // Reloads the browser whenever HTML or JS files change
-    gulp.watch('*.html', browserSync.reload);
-    gulp.watch('**/*.js', browserSync.reload);
+    gulp.watch('**/*.html', browserSync.reload);
+    gulp.watch('js/**/*.js', browserSync.reload);
 });
 
 // Compiles SCSS files from /scss into /css
