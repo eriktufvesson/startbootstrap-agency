@@ -65,21 +65,12 @@ $(function() {
         submitSuccess: function($form, event) {
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
-            var name = $("#bookingForm input#name").val();
             var email = $("#bookingForm input#email").val();
-            var phone = $("#bookingForm input#phone").val();
             var message = $("#bookingForm textarea#message").val();
-            var firstName = name; // For Success/Failure Message
-            // Check for white space in name for Success/Fail message
-            if (firstName.indexOf(' ') >= 0) {
-                firstName = name.split(' ').slice(0, -1).join(' ');
-            }
             $.ajax({
                 url: "../mail/contact_me.php",
                 type: "POST",
                 data: {
-                    name: name,
-                    phone: phone,
                     email: email,
                     message: message
                 },
@@ -104,7 +95,7 @@ $(function() {
 
                     // Fail message
                     $('#bookingForm #success').html("<div class='alert alert-danger'>");
-                    $('#bookingForm #success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
+                    $('#bookingForm #success > .alert-danger').append($("<strong>").text("Sorry, it seems that my mail server is not responding. Please try again later!"));
                     $('#bookingForm #success > .alert-danger').append('</div>');
                     // clear all fields
                     // $('#bookingForm').trigger("reset");
@@ -124,21 +115,12 @@ $(function() {
         submitSuccess: function($form, event) {
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
-            var name = $("#contactForm input#name").val();
             var email = $("#contactForm input#email").val();
-            var phone = $("#contactForm input#phone").val();
             var message = $("#contactForm textarea#message").val();
-            var firstName = name; // For Success/Failure Message
-            // Check for white space in name for Success/Fail message
-            if (firstName.indexOf(' ') >= 0) {
-                firstName = name.split(' ').slice(0, -1).join(' ');
-            }
             $.ajax({
                 url: "././mail/contact_me.php",
                 type: "POST",
                 data: {
-                    name: name,
-                    phone: phone,
                     email: email,
                     message: message
                 },
@@ -158,7 +140,7 @@ $(function() {
                     console.log(err);
                     // Fail message
                     $('#contactForm #success').html("<div class='alert alert-danger'>");
-                    $('#contactForm #success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
+                    $('#contactForm #success > .alert-danger').append($("<strong>").text("Sorry, it seems that my mail server is not responding. Please try again later!"));
                     $('#contactForm #success > .alert-danger').append('</div>');
                     //clear all fields
                     $('#contactForm').trigger("reset");

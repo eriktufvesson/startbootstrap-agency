@@ -167,20 +167,30 @@ textarea.input-xl {
 
 .teaser {
     display: block;
-    padding: 15px 20px;
+    padding: 30px 20px;
     font-weight: 700;
+    font-size: 1.4em;
     letter-spacing: 1.1px;
     color: white;
     text-align: center;
     background-color: $theme-success;
+    // text-decoration: underline;
+
+    .click {
+        text-decoration: underline;
+    }
 
     &:hover, &:active {
         color: white;
-        text-decoration: underline;
+        background-color: darken($theme-success, 10%);
+        text-decoration: none;
     }
 
     &.blue {
         background-color: $theme-dark-primary;
+        &:hover, &:active {
+            background-color: darken($theme-dark-primary, 10%);
+        }
     }
 }
 
@@ -295,6 +305,24 @@ textarea.input-xl {
             li {
                 a {
                 color: white;
+                }
+            }
+        }
+    }
+
+    .teaser {
+        font-size: 1.6em;
+    }
+}
+
+@media(min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .navbar-custom {
+        .nav {
+            li {
+                a {
+                    font-size: 13px;
+                    padding-left: 5px;
+                    padding-right: 5px;
                 }
             }
         }
@@ -499,7 +527,7 @@ section {
 @media(min-width: $screen-sm-min) {
     #services {
         .service-body {
-            margin-bottom: 0;
+            margin-bottom: 20px;
         }
     }
 }
