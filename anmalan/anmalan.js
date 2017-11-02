@@ -5,7 +5,19 @@ $(document).ready(function() {
 
   $.get('/api/event/' + event_route, function(data) {
     scope.event = data;
-
+    $('.event-date').text(scope.event.formattedDate);
+    if (scope.event.enableBooking) {
+      $('.booking-enabled').show();
+      $('.booking-disabled').hide();
+    }
+    else {
+      $('.booking-enabled').hide();
+      $('.booking-disabled').show();
+      if (scope.event.next) {
+        $('.next-event').html('<a href="/anmalan#' + scope.event.next.name + '">Nästa föreläsning hålls i Lund den ' + scope.event.next.formattedDate + '</a>');
+      }
+    }
+    $('.anmalan .intro-text').show();
     reloadPlacesLeft(scope.event.id);
   });
 

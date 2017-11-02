@@ -4,6 +4,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
+setlocale(LC_TIME, 'sv_SE');
 
 $config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
@@ -50,8 +51,26 @@ $app->get('/event/{event_name}', function (Request $request, Response $response)
   $sth->bindParam('event_name', $event_name);
   $sth->execute();
   $event = $sth->fetchObject();
+  $event->formattedDate = getFormattedDate($event->date);
+  $event->enableBooking = strtotime($event->date) > time();
+  $event->next = getNextEvent($event->id, $this->db);
   return $this->response->withJson($event);
 });
+
+function getFormattedDate($date) {
+  return strftime('%e:e %B', strtotime($date));
+}
+
+function getNextEvent($id, $db) {
+  $sth = $db->prepare("SELECT * FROM event WHERE date > (SELECT date from event where id = :id) AND date >= now() ORDER BY date LIMIT 1");
+  $sth->bindParam('id', $id);
+  $sth->execute();
+  $event = $sth->fetchObject();
+  if ($event) {
+    $event->formattedDate = getFormattedDate($event->date);
+  }
+  return $event;
+}
 
 $app->get('/event/places_left/{event_id}', function (Request $request, Response $response) {
   $event_id = $request->getAttribute('event_id');
