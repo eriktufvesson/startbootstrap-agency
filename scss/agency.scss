@@ -59,6 +59,10 @@ h1, h2, h3, h4, h5, h6 {
     @include heading-font;
     color: $theme-dark-primary;
     font-weight: 400;
+
+    &.white {
+        color: white;
+    }
 }
 
 .img-centered {
@@ -452,6 +456,25 @@ header {
 .boka {
     header {
         background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-boka.jpg');
+    }
+}
+
+.presentkort {
+    header {
+        background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-uppstart.jpg');
+        background-repeat: no-repeat;
+    }
+    .choose-giftcert,
+    .choose-delivery {
+        opacity: 0.5;
+        
+        &.selected {
+            opacity: 1;
+        }
+        img {
+            max-width: 100%;
+            margin-bottom: 15px;
+        }
     }
 }
 
@@ -849,7 +872,8 @@ section#contact {
     .form-group {
         margin-bottom: 25px;
         input,
-        textarea {
+        textarea,
+        select {
             padding: 20px;
         }
         input.form-control {
@@ -1036,7 +1060,8 @@ ul.social-buttons {
     .form-group {
         margin-bottom: 25px;
         input,
-        textarea {
+        textarea,
+        select {
             padding: 20px;
         }
         input.form-control {

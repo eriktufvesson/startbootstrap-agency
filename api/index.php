@@ -163,6 +163,62 @@ $app->get('/event/registrations/{event_id}', function (Request $request, Respons
   return $this->response->withJson($data);
 });
 
+$app->post('/giftcert/buy', function (Request $request, Response $response) {
+  $order = $request->getParsedBody();
+
+  // var_dump($order);die;
+
+  $giftcert_id = $order['giftcert_id'];
+  $delivery_id = $order['delivery_id'];
+  $email = $order['email'];
+  $name = $order['name'];
+  $address = $order['address'];
+  $postal_code = $order['postal_code'];
+  $city = $order['city'];
+  
+  // Get giftcert
+  $sth = $this->db->prepare("SELECT * FROM giftcert WHERE id = :giftcert_id");
+  $sth->bindParam('giftcert_id', $giftcert_id);
+  $sth->execute();
+  $giftcert = $sth->fetchObject();
+
+  // Get delivery method
+  $sth = $this->db->prepare("SELECT * FROM delivery_method WHERE id = :delivery_id");
+  $sth->bindParam('delivery_id', $delivery_id);
+  $sth->execute();
+  $delivery_method = $sth->fetchObject();
+
+  // Create order
+  $payment_method = 'Faktura';
+  $subtotal = $giftcert->price;
+
+  $order_query = 'insert into `order` (giftcert_id, delivery_method, name, email, address, postal_code, city, payment_method, subtotal) values (:giftcert_id, :delivery_method, :name, :email, :address, :postal_code, :city, :payment_method, :subtotal)';
+  $sth = $this->db->prepare($order_query);
+  $sth->bindParam('giftcert_id', $giftcert_id);
+  $sth->bindParam('delivery_method', $delivery_method->name);
+  $sth->bindParam('name', $name);
+  $sth->bindParam('email', $email);
+  $sth->bindParam('address', $address);
+  $sth->bindParam('postal_code', $postal_code);
+  $sth->bindParam('city', $city);
+  $sth->bindParam('payment_method', $payment_method);
+  $sth->bindParam('subtotal', $subtotal);
+  $sth->execute();
+
+  $order_id = $this->db->lastInsertId();
+  $order['id'] = $order_id;
+
+  // Send confimation email
+  sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Orderbekräftelse presentkort. Ordernr: $order_id", 'presentkort.html');
+
+  // Send email to admin
+  sendEmail('no-reply@dressbyheart.se', 'Dress by heart', 'info@dressbyheart.se', '', 'Ny beställning av presentkort. Ordernr: ' . $order_id, 
+    "Presentkort: $giftcert->name\nPris: $giftcert->price\nLeveranssätt: $delivery_method->name\nNamn: $name\nE-postadress: $email\Adress: $address\Postadress: $postal_code $city\Betalsätt: $payment_method\Totalt: $subtotal\n");
+
+  return $this->response->withJson(array('status' => true, 'order' => $order));
+
+});
+
 $app->run();
 
 function sendEmail($from_email, $from_name, $to_email, $to_name, $subject, $body, $attachment = NULL) {
