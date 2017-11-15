@@ -81,8 +81,6 @@ $(document).ready(function() {
 
               //clear all fields
               $('#presentkortForm').trigger("reset");
-              
-              reloadPlacesLeft(scope.event.id);
             }
             else {
               // Error message

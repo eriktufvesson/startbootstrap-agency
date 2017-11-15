@@ -166,8 +166,6 @@ $app->get('/event/registrations/{event_id}', function (Request $request, Respons
 $app->post('/giftcert/buy', function (Request $request, Response $response) {
   $order = $request->getParsedBody();
 
-  // var_dump($order);die;
-
   $giftcert_id = $order['giftcert_id'];
   $delivery_id = $order['delivery_id'];
   $email = $order['email'];
@@ -209,7 +207,20 @@ $app->post('/giftcert/buy', function (Request $request, Response $response) {
   $order['id'] = $order_id;
 
   // Send confimation email
-  sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Orderbekräftelse presentkort. Ordernr: $order_id", 'presentkort.html');
+  $replacement_array = array(
+    '#ORDERNR#' => $order['id'],
+    '#GIFTCERT_NAME#' => $giftcert->name,
+    '#GIFTCERT_PRICE#' => $giftcert->price,
+    '#DELIVERY_METHOD#' => $delivery_method->name,
+    '#NAME#' => $name,
+    '#EMAIL#' => $email,
+    '#ADDRESS#' => $address,
+    '#POSTAL_CODE#' => $postal_code,
+    '#CITY#' => $city,
+    '#PAYMENT_METHOD#' => $payment_method,
+    '#SUBTOTAL#' => $subtotal,
+  );
+  sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Orderbekräftelse presentkort. Ordernr: $order_id", 'presentkort.html', $replacement_array);
 
   // Send email to admin
   sendEmail('no-reply@dressbyheart.se', 'Dress by heart', 'info@dressbyheart.se', '', 'Ny beställning av presentkort. Ordernr: ' . $order_id, 
@@ -221,7 +232,7 @@ $app->post('/giftcert/buy', function (Request $request, Response $response) {
 
 $app->run();
 
-function sendEmail($from_email, $from_name, $to_email, $to_name, $subject, $body, $attachment = NULL) {
+function sendEmail($from_email, $from_name, $to_email, $to_name, $subject, $body, $replacement_array = NULL, $attachment = NULL) {
   $status = FALSE;
   
   $mail = new PHPMailer();
@@ -231,9 +242,17 @@ function sendEmail($from_email, $from_name, $to_email, $to_name, $subject, $body
   $mail->addAddress($to_email, $to_name);
   $mail->Subject = $subject;
   if (endsWith($body, '.html')) {
-    $mail->msgHTML(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/mail/' . $body), dirname(__FILE__));
+    $html = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/mail/' . $body);
+    if ($replacement_array) {
+      $html = replaceValues($html, $replacement_array);
+    }
+    error_log($html);
+    $mail->msgHTML($html, dirname(__FILE__));
   }
   else {
+    if ($replacement_array) {
+      $body = replaceValues($body, $replacement_array);
+    }
     $mail->Body = $body;
   }
   //Attach a file
@@ -247,6 +266,13 @@ function sendEmail($from_email, $from_name, $to_email, $to_name, $subject, $body
     $status = TRUE;
   }
   return $status;
+}
+
+function replaceValues($text, $replacement_array) {
+  foreach ($replacement_array as $key => $value) {
+    $text = str_replace($key, $value, $text);
+  }
+  return $text;
 }
 
 function endsWith($haystack, $needle)
