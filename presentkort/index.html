@@ -122,7 +122,7 @@
     </header>
     <section id="giftcert" class="bg-light-gray">
         <div class="container">
-            <form name="presentkort" id="presentkortForm">
+            <form name="presentkort" id="presentkortForm" accept-charset="UTF-8">
                 <div class="row">
                     <div class="col-md-12">
                         <h2>Välj presentkort</h2>
@@ -262,6 +262,13 @@
                         <div class="form-group">
                             <input type="text" name="Ort" class="form-control input-xl" placeholder="Ort *" id="city" required data-validation-required-message="Vänligen ange din ort.">
                             <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <textarea name="Meddelande" id="message" class="form-control input-xl" placeholder="Meddelande" maxlength="2000"></textarea>
                         </div>
                     </div>
                 </div>

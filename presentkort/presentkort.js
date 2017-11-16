@@ -57,6 +57,7 @@ $(document).ready(function() {
       var postalCode = $("#presentkortForm input#postalCode").val();
       var city = $("#presentkortForm input#city").val();
       var email = $("#presentkortForm input#email").val();
+      var message = $("#presentkortForm textarea#message").val();
       $.ajax({
           url: "../api/giftcert/buy",
           type: "POST",
@@ -67,7 +68,8 @@ $(document).ready(function() {
             address: address,
             postal_code: postalCode,
             city: city,
-            email: email
+            email: email,
+            message: message
           },
           cache: false,
           success: function(res) {
@@ -94,7 +96,7 @@ $(document).ready(function() {
 
               // Fail message
               $('#presentkortForm #success').html("<div class='alert alert-danger'>");
-              $('#presentkortForm #success > .alert-danger').append($("<strong>").text("Sorry " + firstname + ", it seems that my mail server is not responding. Please try again later!"));
+              $('#presentkortForm #success > .alert-danger').append($("<strong>").text("Sorry, it seems that my mail server is not responding. Please try again later!"));
               $('#presentkortForm #success > .alert-danger').append('</div>');
           },
           complete: function() {

@@ -173,6 +173,7 @@ $app->post('/giftcert/buy', function (Request $request, Response $response) {
   $address = $order['address'];
   $postal_code = $order['postal_code'];
   $city = $order['city'];
+  $message = $order['message'];
   
   // Get giftcert
   $sth = $this->db->prepare("SELECT * FROM giftcert WHERE id = :giftcert_id");
@@ -190,7 +191,7 @@ $app->post('/giftcert/buy', function (Request $request, Response $response) {
   $payment_method = 'Faktura';
   $subtotal = $giftcert->price;
 
-  $order_query = 'insert into `order` (giftcert_id, delivery_method, name, email, address, postal_code, city, payment_method, subtotal) values (:giftcert_id, :delivery_method, :name, :email, :address, :postal_code, :city, :payment_method, :subtotal)';
+  $order_query = 'insert into `order` (giftcert_id, delivery_method, name, email, address, postal_code, city, payment_method, subtotal, message) values (:giftcert_id, :delivery_method, :name, :email, :address, :postal_code, :city, :payment_method, :subtotal, :message)';
   $sth = $this->db->prepare($order_query);
   $sth->bindParam('giftcert_id', $giftcert_id);
   $sth->bindParam('delivery_method', $delivery_method->name);
@@ -201,6 +202,7 @@ $app->post('/giftcert/buy', function (Request $request, Response $response) {
   $sth->bindParam('city', $city);
   $sth->bindParam('payment_method', $payment_method);
   $sth->bindParam('subtotal', $subtotal);
+  $sth->bindParam('message', $message); 
   $sth->execute();
 
   $order_id = $this->db->lastInsertId();
@@ -219,6 +221,7 @@ $app->post('/giftcert/buy', function (Request $request, Response $response) {
     '#CITY#' => $city,
     '#PAYMENT_METHOD#' => $payment_method,
     '#SUBTOTAL#' => $subtotal,
+    '#MESSAGE#' => $message,
   );
   sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Orderbekräftelse presentkort. Ordernr: $order_id", 'presentkort.html', $replacement_array);
 
