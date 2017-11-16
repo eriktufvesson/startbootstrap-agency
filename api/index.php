@@ -188,7 +188,7 @@ $app->post('/giftcert/buy', function (Request $request, Response $response) {
   $delivery_method = $sth->fetchObject();
 
   // Create order
-  $payment_method = 'Faktura';
+  $payment_method = '';
   $subtotal = $giftcert->price;
 
   $order_query = 'insert into `order` (giftcert_id, delivery_method, name, email, address, postal_code, city, payment_method, subtotal, message) values (:giftcert_id, :delivery_method, :name, :email, :address, :postal_code, :city, :payment_method, :subtotal, :message)';
@@ -227,7 +227,7 @@ $app->post('/giftcert/buy', function (Request $request, Response $response) {
 
   // Send email to admin
   sendEmail('no-reply@dressbyheart.se', 'Dress by heart', 'info@dressbyheart.se', '', 'Ny beställning av presentkort. Ordernr: ' . $order_id, 
-    "Presentkort: $giftcert->name\nPris: $giftcert->price\nLeveranssätt: $delivery_method->name\nNamn: $name\nE-postadress: $email\nAdress: $address\nPostadress: $postal_code $city\nMeddelande: $message\n\nBetalsätt: $payment_method\nTotalt: $subtotal\n");
+    "Presentkort: $giftcert->name\nPris: $giftcert->price\nLeveranssätt: $delivery_method->name\nNamn: $name\nE-postadress: $email\nAdress: $address\nPostadress: $postal_code $city\nMeddelande: $message\n\nTotalt: $subtotal\n");
 
   return $this->response->withJson(array('status' => true, 'order' => $order));
 

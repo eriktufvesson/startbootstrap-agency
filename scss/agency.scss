@@ -196,6 +196,13 @@ textarea.input-xl {
             background-color: darken($theme-dark-primary, 10%);
         }
     }
+    
+    &.darkblue {
+        background-color: darken($theme-dark-primary, 10%);
+        &:hover, &:active {
+            background-color: $theme-dark-primary;
+        }
+    }
 }
 
 // Custom Navigation Bar
