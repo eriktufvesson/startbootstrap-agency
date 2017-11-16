@@ -221,13 +221,13 @@ $app->post('/giftcert/buy', function (Request $request, Response $response) {
     '#CITY#' => $city,
     '#PAYMENT_METHOD#' => $payment_method,
     '#SUBTOTAL#' => $subtotal,
-    '#MESSAGE#' => $message,
+    '#MESSAGE#' => str_replace('\n', '<br>', $message),
   );
   sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Orderbekräftelse presentkort. Ordernr: $order_id", 'presentkort.html', $replacement_array);
 
   // Send email to admin
   sendEmail('no-reply@dressbyheart.se', 'Dress by heart', 'info@dressbyheart.se', '', 'Ny beställning av presentkort. Ordernr: ' . $order_id, 
-    "Presentkort: $giftcert->name\nPris: $giftcert->price\nLeveranssätt: $delivery_method->name\nNamn: $name\nE-postadress: $email\Adress: $address\Postadress: $postal_code $city\Betalsätt: $payment_method\Totalt: $subtotal\n");
+    "Presentkort: $giftcert->name\nPris: $giftcert->price\nLeveranssätt: $delivery_method->name\nNamn: $name\nE-postadress: $email\nAdress: $address\nPostadress: $postal_code $city\nMeddelande: $message\n\nBetalsätt: $payment_method\nTotalt: $subtotal\n");
 
   return $this->response->withJson(array('status' => true, 'order' => $order));
 
