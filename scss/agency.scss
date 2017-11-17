@@ -468,7 +468,7 @@ header {
 
 .presentkort {
     header {
-        background: #000 url('../img/header-bg-giftcert-2.jpg');
+        background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-giftcert-2.jpg');
         background-position: top center;
         background-repeat: no-repeat;
     }
