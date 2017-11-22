@@ -233,6 +233,21 @@ $app->post('/giftcert/buy', function (Request $request, Response $response) {
 
 });
 
+$app->post('/competition', function (Request $request, Response $response) {
+  $post_data = $request->getParsedBody();
+
+  $email = $post_data['email'];
+  $name = $post_data['name'];
+  $answer = $post_data['answer'];
+  
+  // Send email to admin
+  sendEmail('no-reply@dressbyheart.se', 'Dress by heart', 'info@dressbyheart.se', '', 'Inskickat tävlingssvar', 
+    "Namn: $name\nE-postadress: $email\nSvar: $answer\n");
+
+  return $this->response->withJson(array('status' => true));
+
+});
+
 $app->run();
 
 function sendEmail($from_email, $from_name, $to_email, $to_name, $subject, $body, $replacement_array = NULL, $attachment = NULL) {

@@ -34,7 +34,7 @@ gulp.task('minify-css', ['sass'], function() {
 
 // Minify JS
 gulp.task('minify-js', function() {
-    return gulp.src(['js/agency.js', 'js/contact_me.js', 'js/jqBootstrapValidation.js', 'anmalan/anmalan.js', 'presentkort/presentkort.js'])
+    return gulp.src(['js/agency.js', 'js/contact_me.js', 'js/jqBootstrapValidation.js', 'anmalan/anmalan.js', 'presentkort/presentkort.js', 'jultavling/jultavling.js'])
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(rename({ suffix: '.min' }))
