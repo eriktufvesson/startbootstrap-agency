@@ -508,6 +508,15 @@ header {
     }
 }
 
+.jultavling {
+    .intro-text {
+        margin-bottom: 25px;
+    }
+    .question {
+        font-size: 150%;
+    }
+}
+
 @media(min-width:768px) {
     header {
         .intro-text {

@@ -89,7 +89,7 @@ if ($month !== 'Dec' || $day > 28) {
     </nav>
     <?php
       if ($day >= 1 && $day < 8) {
-    ?>
+	?>
     <!-- Header -->
     <header class="garderoben" style="background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-jultavling-1.jpg')">
         <div class="container">
@@ -99,18 +99,20 @@ if ($month !== 'Dec' || $day > 28) {
                 </div>
                 <div class="intro-slogan"></div>
                 <div class="intro-lead-in">
+                    <p class="large question">
+                        Vilken skillnad skulle en stilcoachning göra för dig och ditt liv? 
+                    </p>
                     <p class="large">
                         Vinn två timmar stilcoacning! Svara på frågan för att få en chans att bli min referenskund.
-                        <br/>
-                        Vilken skillnad skulle en stilcoachning göra för dig och ditt liv? 
                     </p>
                 </div>
             </div>
         </div>
     </header>
     <?php
-      } else if ($day >= 8 && $day < 15) {
-    ?>
+}
+else if ($day >= 8 && $day < 15) {
+?>
     <header class="garderoben" style="background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-jultavling-2.jpg')">
         <div class="container">
             <div class="intro-text">
@@ -119,18 +121,20 @@ if ($month !== 'Dec' || $day > 28) {
                 </div>
                 <div class="intro-slogan"></div>
                 <div class="intro-lead-in">
-                    <p class="large">
-                    Vinn stilcoachning för två personer i tre timmar! Svara på frågan för att få en chans att bli mina referenskunder.
-                        <br/>
+                    <p class="large question">
                         Vilken fördel ser du med att göra en stilcoachning tillsammans?
+                    </p>
+                    <p class="large">
+                        Vinn stilcoachning för två personer i tre timmar! Svara på frågan för att få en chans att bli mina referenskunder.
                     </p>
                 </div>
             </div>
         </div>
     </header>
     <?php
-      } else if ($day >= 15 && $day < 22) {
-    ?>
+}
+else if ($day >= 15 && $day < 22) {
+?>
     <header class="garderoben" style="background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-jultavling-3.jpg')">
         <div class="container">
             <div class="intro-text">
@@ -139,38 +143,43 @@ if ($month !== 'Dec' || $day > 28) {
                 </div>
                 <div class="intro-slogan"></div>
                 <div class="intro-lead-in">
+                    <p class="large question">
+                        Varför vill du kombinera stilcoachning med persnal shopper?
+                    </p>
                     <p class="large">
-                    Vinn två timmar stilcoacning följt av två timmar med personal shopper! Svara på frågan för att få en chans att bli min referenskund.
-                        <br/>
-                        varför vill du kombinera stilcoachning med persnal shopper?
+                        Vinn två timmar stilcoacning följt av två timmar med personal shopper! Svara på frågan för att få en chans att bli min referenskund.
                     </p>
                 </div>
             </div>
         </div>
     </header>
     <?php
-      } else if ($day >= 22 && $day < 29) {
-    ?>
+}
+else if ($day >= 22 && $day < 29) {
+?>
     <header class="garderoben" style="background: linear-gradient( rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65) ), url('../img/header-bg-jultavling-4.jpg')">
         <div class="container">
             <div class="intro-text">
                 <div class="intro-heading">
                     <h1>jultävling - 4:e advent</h1>
                 </div>
-                <div class="intro-slogan"></div>
+                <div class="intro-slogan">
+                
+                </div>
                 <div class="intro-lead-in">
-                    <p class="large">
-                    Vinn stilcoacning med garderobsgenomgång och personal shopper (2+2+2 timmar)! Svara på frågan för att få en chans att bli min referenskund.
-                        <br/>
+                    <p class="large question">
                         Varför vill du göra en stilcoachning och få hjälp från att rensa till att komplettera din garderob?
+                    </p>
+                    <p class="large">
+                        Vinn stilcoachning med garderobsgenomgång och personal shopper (2+2+2 timmar)! Svara på frågan för att få en chans att bli min referenskund.
                     </p>
                 </div>
             </div>
         </div>
     </header>
     <?php
-      }
-    ?>
+}
+?>
     <section class="bg-light-gray">
       <div class="container">
         <form name="competition" id="competitionForm">
@@ -211,7 +220,14 @@ if ($month !== 'Dec' || $day > 28) {
               </div>
           </div>
           <p class="large">
-              Tävlingen gäller möjligheten att bli min referenskund. Detta innebär att om du vinner får du stilcoahcningen gratis och du godkänner att jag dokumenterar och delar med mig av din väg mot din personliga stil. Stilcoachningen kan ske i Dress by hearts lokaler i Lund, hos kund eller möte online. Garderobsgenomgång sker hemma hos dig och shopping sker i Lund eller Malmö. Körersättning inom Skåne ingår för garderobsgenomgången. Om du vinner bokar vi och genomför stilcoachningen innan den sista februari. När du deltar i tävlingen godkänner du att jag får använda ditt tävlingssvar för att formulera framtida marknadsföringsmaterial som då självklart kommer vara helt anonymiserat. Tävlingen pågår från fredag till midnatt efterförljande torsdag. Vinnaren utses av Jane Tufvesson, baserat på tävlingssvaren. Vinnaren meddelas i nästföljande nyhetsbrev samt på Dress by hearts Instagram, Facebook och i Facebook-gruppen Må bra i dina kläder. 
+              Tävlingen gäller möjligheten att bli min referenskund. Detta innebär att om du vinner får du stilcoachningen gratis och du godkänner 
+              att jag dokumenterar och delar med mig av din väg mot din personliga stil. 
+              Stilcoachningen kan ske i Dress by hearts lokaler i Lund, hos dig eller möte online. Garderobsgenomgång sker hemma hos dig och shopping 
+              sker i Lund eller Malmö. Körersättning inom Skåne ingår för garderobsgenomgången. Om du vinner bokar vi och genomför stilcoachningen innan 
+              den sista februari. När du deltar i tävlingen godkänner du att jag får använda ditt tävlingssvar för att formulera framtida marknadsföringsmaterial 
+              som då självklart kommer vara helt anonymiserat. Tävlingen pågår från fredag till midnatt efterförljande torsdag. 
+              Vinnaren utses av Jane Tufvesson, baserat på tävlingssvaren. Vinnaren meddelas i nästföljande nyhetsbrev samt på 
+              Dress by hearts Instagram, Facebook och i Facebook-gruppen Må bra i dina kläder. 
           </p>
         </form>
       </div>
@@ -272,10 +288,8 @@ if ($month !== 'Dec' || $day > 28) {
     <!-- Contact Form JavaScript -->
     <script src="../js/jqBootstrapValidation.min.js"></script>
     <script src="../js/contact_me.min.js"></script>
-
     <!-- Page specific script -->
     <script src="../js/jultavling.min.js"></script>
-
     <!-- Theme JavaScript -->
     <script src="../js/agency.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
