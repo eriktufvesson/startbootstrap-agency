@@ -95,12 +95,14 @@ if ($month !== 'Dec' || $day > 28) {
         <div class="container">
             <div class="intro-text">
                 <div class="intro-heading">
-                    <h1>Adventstävling 1</h1>
+                    <h1>Jultävling - 1:a advent</h1>
                 </div>
                 <div class="intro-slogan"></div>
                 <div class="intro-lead-in">
                     <p class="large">
-                        Du är varmt välkommen att skicka in en bokningsförfrågan. Är du intresserad av att boka en inspirationsföreläsning, workshop eller individuell coachning? Fyll i formuläret nedan så återkommer jag till dig så snart som möjligt. 
+                        Vinn två timmar stilcoacning! Svara på frågan för att få en chans att bli min referenskund.
+                        <br/>
+                        Vilken skillnad skulle en stilcoachning göra för dig och ditt liv? 
                     </p>
                 </div>
             </div>
@@ -113,12 +115,14 @@ if ($month !== 'Dec' || $day > 28) {
         <div class="container">
             <div class="intro-text">
                 <div class="intro-heading">
-                    <h1>Adventstävling 2</h1>
+                    <h1>Jultävling - 2:a advent</h1>
                 </div>
                 <div class="intro-slogan"></div>
                 <div class="intro-lead-in">
                     <p class="large">
-                        Du är varmt välkommen att skicka in en bokningsförfrågan. Är du intresserad av att boka en inspirationsföreläsning, workshop eller individuell coachning? Fyll i formuläret nedan så återkommer jag till dig så snart som möjligt. 
+                    Vinn stilcoachning för två personer i tre timmar! Svara på frågan för att få en chans att bli mina referenskunder.
+                        <br/>
+                        Vilken fördel ser du med att göra en stilcoachning tillsammans?
                     </p>
                 </div>
             </div>
@@ -131,12 +135,14 @@ if ($month !== 'Dec' || $day > 28) {
         <div class="container">
             <div class="intro-text">
                 <div class="intro-heading">
-                    <h1>Adventstävling 3</h1>
+                    <h1>Jultävling - 3:e advent</h1>
                 </div>
                 <div class="intro-slogan"></div>
                 <div class="intro-lead-in">
                     <p class="large">
-                        Du är varmt välkommen att skicka in en bokningsförfrågan. Är du intresserad av att boka en inspirationsföreläsning, workshop eller individuell coachning? Fyll i formuläret nedan så återkommer jag till dig så snart som möjligt. 
+                    Vinn två timmar stilcoacning följt av två timmar med personal shopper! Svara på frågan för att få en chans att bli min referenskund.
+                        <br/>
+                        varför vill du kombinera stilcoachning med persnal shopper?
                     </p>
                 </div>
             </div>
@@ -149,12 +155,14 @@ if ($month !== 'Dec' || $day > 28) {
         <div class="container">
             <div class="intro-text">
                 <div class="intro-heading">
-                    <h1>Adventstävling 4</h1>
+                    <h1>jultävling - 4:e advent</h1>
                 </div>
                 <div class="intro-slogan"></div>
                 <div class="intro-lead-in">
                     <p class="large">
-                        Du är varmt välkommen att skicka in en bokningsförfrågan. Är du intresserad av att boka en inspirationsföreläsning, workshop eller individuell coachning? Fyll i formuläret nedan så återkommer jag till dig så snart som möjligt. 
+                    Vinn stilcoacning med garderobsgenomgång och personal shopper (2+2+2 timmar)! Svara på frågan för att få en chans att bli min referenskund.
+                        <br/>
+                        Varför vill du göra en stilcoachning och få hjälp från att rensa till att komplettera din garderob?
                     </p>
                 </div>
             </div>
@@ -203,8 +211,7 @@ if ($month !== 'Dec' || $day > 28) {
               </div>
           </div>
           <p class="large">
-              Stilcoachning kan ske i Dress by hearts lokaler i Lund, hos kund eller på distans. Presentkorten inkluderar körersättning
-              inom Skåne. Garderobsgenomgång sker hemma hos kund och shopping sker i Lund eller Malmö.
+              Tävlingen gäller möjligheten att bli min referenskund. Detta innebär att om du vinner får du stilcoahcningen gratis och du godkänner att jag dokumenterar och delar med mig av din väg mot din personliga stil. Vinnaren utses av Jane Tufvesson baserat på tävlingssvaren. Stilcoachning kan ske i Dress by hearts lokaler i Lund, hos kund eller möte online. Garderobsgenomgång sker hemma hos dig och shopping sker i Lund eller Malmö. Körersättning inom Skåne ingår för garderobsgenomgången. Om du vinner bokar vi och genomför stilcoachningen innan den sista februari. När du deltar i tävlingen godkänner du även att jag får använda ditt tävlingssvar för att formulera framtida marknadsföringsmaterial som då självklart kommer vara helt anonymiserat. 
           </p>
         </form>
       </div>
