@@ -50,7 +50,7 @@ if ($month !== 'Dec' || $day > 28) {
                 </button>
                 <a class="navbar-brand page-scroll" href="/">
                     <i class="fa fa-heart"></i>
-                    <div class="brand-wrapper">
+                    <div class="brand-wrapper white">
                         <span class="brand">
                             Dress by heart
                         </span>
