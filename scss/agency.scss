@@ -180,6 +180,11 @@ textarea.input-xl {
     background-color: $theme-success;
     // text-decoration: underline;
 
+    &.small {
+        padding: 10px 20px;
+        font-size: 1.2em;
+    }
+
     .click {
         text-decoration: underline;
     }
@@ -188,6 +193,13 @@ textarea.input-xl {
         color: white;
         background-color: darken($theme-success, 10%);
         text-decoration: none;
+    }
+
+    &.darkred {
+        background-color: darken($theme-success, 10%);
+        &:hover, &:active {
+            background-color: $theme-success;
+        }
     }
 
     &.blue {
