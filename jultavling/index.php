@@ -144,7 +144,7 @@ else if ($day >= 15 && $day < 22) {
                 <div class="intro-slogan"></div>
                 <div class="intro-lead-in">
                     <p class="large question">
-                        Varför vill du kombinera stilcoachning med persnal shopper?
+                        Varför vill du kombinera stilcoachning med personal shopper?
                     </p>
                     <p class="large">
                         Vinn två timmar stilcoacning följt av två timmar med personal shopper! Svara på frågan för att få en chans att bli min referenskund.
