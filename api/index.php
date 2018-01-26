@@ -44,16 +44,18 @@ $app->get('/', function(Request $request, Response $response) {
   return $response;
 });
 
-$app->get('/event/{event_name}', function (Request $request, Response $response) {
+$app->get('/event/{event_type}/{event_name}', function (Request $request, Response $response) {
   $event_name = $request->getAttribute('event_name');
+  $event_type = $request->getAttribute('event_type');
 
-  $sth = $this->db->prepare("SELECT * FROM event WHERE name = :event_name");
+  $sth = $this->db->prepare("SELECT * FROM event WHERE `type` = :event_type AND name = :event_name");
   $sth->bindParam('event_name', $event_name);
+  $sth->bindParam('event_type', $event_type);
   $sth->execute();
   $event = $sth->fetchObject();
   $event->formattedDate = getFormattedDate($event->date);
   $event->enableBooking = strtotime($event->date) > time();
-  $event->next = getNextEvent($event->id, $this->db);
+  $event->next = getNextEvent($event->id, $event->type, $this->db);
   return $this->response->withJson($event);
 });
 
@@ -61,9 +63,10 @@ function getFormattedDate($date) {
   return strftime('%e:e %B', strtotime($date));
 }
 
-function getNextEvent($id, $db) {
-  $sth = $db->prepare("SELECT * FROM event WHERE date > (SELECT date from event where id = :id) AND date >= now() ORDER BY date LIMIT 1");
+function getNextEvent($id, $type, $db) {
+  $sth = $db->prepare("SELECT * FROM event WHERE `type` = :type AND date > (SELECT date from event where id = :id) AND date >= now() ORDER BY date LIMIT 1");
   $sth->bindParam('id', $id);
+  $sth->bindParam('type', $type);
   $sth->execute();
   $event = $sth->fetchObject();
   if ($event) {
@@ -72,7 +75,7 @@ function getNextEvent($id, $db) {
   return $event;
 }
 
-$app->get('/event/places_left/{event_id}', function (Request $request, Response $response) {
+$app->get('/event_places_left/{event_id}', function (Request $request, Response $response) {
   $event_id = $request->getAttribute('event_id');
 
   $sth = $this->db->prepare("select 
@@ -138,16 +141,20 @@ $app->post('/event/register', function (Request $request, Response $response) {
   $registration['id'] = $this->db->lastInsertId();
 
   // Send confimation email
+  $type = 'anmalan';
+  if ($event->type === 'workshop') {
+    $type = 'workshop';
+  }
   if (!$queue) {
-    sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Anmälan till inspirationsföreläsning i Lund $event->date", 'anmalan.html');
+    sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Anmälan till $event->title $event->date", $type . '.html');
   }
   else {
     // Send queue email instead
-    sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Anmälan till inspirationsföreläsning i Lund $event->date", 'anmalan-queue.html');
+    sendEmail('info@dressbyheart.se', 'Dress by heart', $email, $name, "Anmälan till $event->title $event->date", $type . '-queue.html');
   }
 
   // Send email to admin
-  sendEmail('no-reply@dressbyheart.se', 'Dress by heart', 'info@dressbyheart.se', '', 'Anmälan inspirationsföreläsning ' . $event->name, "Namn: $name\nE-postadress: $email\nAntal platser: $nbr_places\Kö: $queue");
+  sendEmail('no-reply@dressbyheart.se', 'Dress by heart', 'info@dressbyheart.se', '', 'Anmälan ' . $event->title . ' ' . $event->date, "Namn: $name\nE-postadress: $email\nAntal platser: $nbr_places\Kö: $queue");
 
   return $this->response->withJson(array('status' => true, 'registration' => $registration));
 

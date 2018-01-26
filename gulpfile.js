@@ -34,7 +34,15 @@ gulp.task('minify-css', ['sass'], function() {
 
 // Minify JS
 gulp.task('minify-js', function() {
-    return gulp.src(['js/agency.js', 'js/contact_me.js', 'js/jqBootstrapValidation.js', 'anmalan/anmalan.js', 'presentkort/presentkort.js', 'jultavling/jultavling.js'])
+    return gulp.src([
+            'js/agency.js', 
+            'js/contact_me.js', 
+            'js/jqBootstrapValidation.js', 
+            'anmalan/anmalan.js', 
+            'workshop/workshop.js', 
+            'presentkort/presentkort.js', 
+            'jultavling/jultavling.js'
+        ])
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(rename({ suffix: '.min' }))
@@ -68,6 +76,13 @@ gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() 
     // Reloads the browser whenever HTML or JS files change
     gulp.watch('**/*.html', browserSync.reload);
     gulp.watch('js/**/*.js', browserSync.reload);
+});
+
+// Dev task with browserSync
+gulp.task('watch', ['sass', 'minify-css', 'minify-js'], function() {
+    gulp.watch('scss/*.scss', ['sass']);
+    gulp.watch('css/*.css', ['minify-css']);
+    gulp.watch(['**/*.js', '!node_modules/**/*.js'], ['minify-js']);
 });
 
 // Compiles SCSS files from /scss into /css

@@ -3,9 +3,9 @@ $(document).ready(function() {
   var event_route = location.hash.replace('#', '').replace('/', '');
   var scope = {};
 
-  $.get('/api/event/lecture/' + event_route, function(data) {
+  $.get('/api/event/workshop/' + event_route, function(data) {
     scope.event = data;
-    document.title = 'Inspirationsföreläsning Lund ' + scope.event.formattedDate + ' | Dress by heart';
+    document.title = 'Workshop Lund ' + scope.event.formattedDate + ' | Dress by heart';
     $('.event-date').text(scope.event.formattedDate);
     $('.event-price').text(scope.event.price);
     $('.event-title').text(scope.event.title);
@@ -17,7 +17,7 @@ $(document).ready(function() {
       $('.booking-enabled').hide();
       $('.booking-disabled').show();
       if (scope.event.next) {
-        $('.next-event').html('<a href="/anmalan#' + scope.event.next.name + '">Nästa föreläsning hålls i Lund den ' + scope.event.next.formattedDate + '</a>');
+        $('.next-event').html('<a href="/workshop#' + scope.event.next.name + '">Nästa workshop hålls i Lund den ' + scope.event.next.formattedDate + '</a>');
       }
     }
     $('.anmalan .intro-text').show();
