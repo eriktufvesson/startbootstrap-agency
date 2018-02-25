@@ -3,6 +3,10 @@ $(document).ready(function() {
   var event_route = location.hash.replace('#', '').replace('/', '');
   var scope = {};
 
+  if (event_route === '') {
+    event_route = 'next';
+  }
+
   $.get('/api/event/lecture/' + event_route, function(data) {
     scope.event = data;
     document.title = 'Inspirationsföreläsning Lund ' + scope.event.formattedDate + ' | Dress by heart';

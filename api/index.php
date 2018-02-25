@@ -48,9 +48,17 @@ $app->get('/event/{event_type}/{event_name}', function (Request $request, Respon
   $event_name = $request->getAttribute('event_name');
   $event_type = $request->getAttribute('event_type');
 
-  $sth = $this->db->prepare("SELECT * FROM event WHERE `type` = :event_type AND name = :event_name");
-  $sth->bindParam('event_name', $event_name);
-  $sth->bindParam('event_type', $event_type);
+  $sth = NULL;
+  if ($event_name === 'next') {
+    $sth = $this->db->prepare("SELECT * FROM event WHERE `type` = :event_type AND `date` >= now() ORDER BY `date` LIMIT 1");
+    $sth->bindParam('event_type', $event_type);
+  }
+  else {
+    $sth = $this->db->prepare("SELECT * FROM event WHERE `type` = :event_type AND name = :event_name");
+    $sth->bindParam('event_name', $event_name);
+    $sth->bindParam('event_type', $event_type);
+  }
+
   $sth->execute();
   $event = $sth->fetchObject();
   $event->formattedDate = getFormattedDate($event->date);
